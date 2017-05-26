@@ -18,3 +18,5 @@ reveal.initialize({
 });
 
 hljs.initHighlightingOnLoad();
+
+reveal.next();
