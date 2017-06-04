@@ -1,4 +1,4 @@
-# Event loop
+  # Event loop
 
 ## Timers
 
@@ -11,9 +11,7 @@
 
 ```
 
-## Promises
-
-Microtasks
+## Microtasks
 
 ```javascript
   setTimeout(() => console.log('third'), 0);

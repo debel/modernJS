@@ -1,14 +1,14 @@
 {
   "name": "ModernJS",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lectures and materials for INF310a Modern JavaScript",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mihail Mikov",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.28.0",
@@ -17,6 +17,7 @@
     "mustache": "^2.3.0",
     "reveal.js": "^3.4.1",
     "style-loader": "^0.17.0",
-    "webpack": "^2.4.1"
+    "webpack": "^2.4.1",
+    "d3": "^4.9.1"
   }
 }
