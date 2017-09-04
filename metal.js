@@ -7,7 +7,7 @@ const marked = require('marked');
 
 const renderer = new marked.Renderer();
 renderer.heading = (text, level) => `</section><section><h${level}>${text}</h${level}>`;
-renderer.link = (href, _, text) => `<a href="/docs${href}">${text}</a>`;
+renderer.link = (href, _, text) => `<a href="${href}">${text}</a>`;
 
 metalsmith(__dirname)
   .metadata({
@@ -23,4 +23,4 @@ metalsmith(__dirname)
   .use(markdown({ renderer }))
   .use(permalinks())
   .use(layouts({ engine: 'handlebars', default: 'no-title-slide.html' }))
-  .build(error => console.error(error));
+  .build(error => error ? console.error(error) : console.log('Markdown -> HTML OK'));

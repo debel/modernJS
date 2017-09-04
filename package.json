@@ -13,11 +13,15 @@
   "devDependencies": {
     "css-loader": "^0.28.0",
     "file-loader": "^0.11.1",
-    "gulp": "^3.9.1",
-    "mustache": "^2.3.0",
+    "handlebars": "^4.0.10",
+    "highlight.js": "^9.12.0",
+    "metalsmith": "^2.3.0",
+    "metalsmith-collections": "^0.9.0",
+    "metalsmith-layouts": "^1.8.1",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.5.0",
     "reveal.js": "^3.4.1",
     "style-loader": "^0.17.0",
-    "webpack": "^2.4.1",
-    "d3": "^4.9.1"
+    "webpack": "^2.4.1"
   }
 }

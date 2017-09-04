@@ -23,13 +23,14 @@
   <div class="reveal">
     <div class="slides">
       <h1>Language features</h1>
+      <ul>
       {{#each collections.languageFeatures}}
-        <a href="../{{this.path}}">{{this.title}}</a>
+        <li><a href="../{{this.path}}">{{this.title}}</a></li>
       {{/each}}
     </ul>
     </div>
   </div>
-  <script src="/docs/build/index.js"></script>
+  <script src="/build/index.js"></script>
 </body>
 
 </html>
