@@ -1,0 +1,126 @@
+<html>
+
+<head>
+  <title>Modern JS : Types</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Types</h1><p>Variables don&#39;t have types.</p>
+<p>Values have types.</p>
+</section><section><h2>Primitive types</h2><ul>
+<li>boolean</li>
+<li>string</li>
+<li>number</li>
+<li>symbol</li>
+<li>null</li>
+<li>undefined</li>
+</ul>
+</section><section><h2>Complex types</h2><p>All complex types are objects.</p>
+<ul>
+<li>object<ul>
+<li>function<ul>
+<li>class</li>
+</ul>
+</li>
+<li>array</li>
+<li>regex</li>
+</ul>
+</li>
+</ul>
+</section><section><h2>The <code>typeof</code> operator</h2><pre><code class="lang-javascript">typeof &#39;abc&#39; // &quot;string&quot;
+typeof 123 // &quot;number&quot;
+typeof 1.23 // &quot;number&quot;
+typeof NaN // &quot;number&quot;
+typeof true // &quot;boolean&quot;
+typeof undefined // &quot;undefined&quot;
+typeof function () {} // &quot;function&quot;
+typeof null // &quot;object&quot;
+typeof [] // &quot;object&quot;
+</code></pre>
+<p>You should avoid relying on <code>typeof</code>
+in your application code.</p>
+</section><section><h2>Methods and properties of literals</h2><p>They inherit properties and methods
+from their respective prototypes.</p>
+<pre><code class="lang-javascript">  &quot;hello&quot;.length // 4
+  &quot;hello&quot;.split(&#39;&#39;) // [&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;]
+
+  1..toString() // &quot;1&quot;
+  3.14.toString() // &quot;3.14&quot;
+
+  ({ x: 1 }.x) // 1
+  [1, 2, 3].length // 2
+</code></pre>
+</section><section><h3>Question</h3><p>Is this code valid?
+What would the output be?</p>
+<pre><code class="lang-javascript">  16[&quot;toString&quot;](16)
+</code></pre>
+</section><section><h2>Parameters and Values</h2><p>Parameters are passed by value.
+The receiving function cannot change
+the bindings of the calling context.</p>
+<pre><code class="lang-javascript">  function swap(x, y) {
+    var z = x;
+    x = y; y = z;
+  }
+
+  var x = 5; var y = 6;
+
+  swap(x, y);
+
+  x // 5
+  y // 6
+</code></pre>
+</section><section><h2>References</h2><p>Primitive values are immutable and have a single instance for each value.</p>
+<pre><code class="lang-javascript">  var x = 5; var y = 5;
+  x === y // true
+
+  var s = &quot;ab&quot;; var z = &quot;ab&quot;;
+  s === z // true
+</code></pre>
+<p>Each array / object is a separate instance</p>
+<pre><code class="lang-javascript">  var x = new Number(2);
+  var y = new Number(2);
+  x === y // false
+
+  [] === [] // false
+  [1, 2, 3] === [1, 2, 3] // false
+
+  {} === {} // false
+  { x: 1 } === { x: 1 } // false
+</code></pre>
+</section><section><h2>Values and prototypes</h2><pre><code class="lang-javascript">  String.prototype.isPrototypeOf(&quot;abc&quot;) // true
+
+  Number.prototype.isPrototypeOf(3.14) // true
+  Number.prototype.isPrototypeOf(NaN) // true
+
+  RegExp.prototype.isPrototypeOf(/(\d+)/) // true
+</code></pre>
+</section><section><h2>JIT Optimization</h2><p>Internally JavaScript engines track the type of the arguments
+passed to every function call in order to optimize performance.</p>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

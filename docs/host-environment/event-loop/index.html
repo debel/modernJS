@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <title>Modern JS : </title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Event loop</h1></section><section><h2>Timers</h2><pre><code class="lang-javascript">  const timeout = setTimeout(function () {}, milliseconds);
+  clearTimeout(timeout);
+
+  const interval = setInterval(function () {}, milliseconds);
+  clearInterval(interval);
+</code></pre>
+</section><section><h2>Microtasks</h2><pre><code class="lang-javascript">  setTimeout(() =&gt; console.log(&#39;third&#39;), 0);
+  Promise.resolve(&#39;second&#39;).then(console.log);
+  console.log(&#39;first&#39;);
+</code></pre>
+</section><section><h2>Scheduling</h2>
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

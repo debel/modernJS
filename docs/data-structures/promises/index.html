@@ -1,0 +1,100 @@
+<html>
+
+<head>
+  <title>Modern JS : Promises</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Promises</h1></section><section><h2>Using promises</h2><pre><code class="lang-javascript">  waitForAnswer().then(doSomethingWithIt);
+</code></pre>
+<pre><code class="lang-javascript">  waitForAnswer().catch(handleError);
+</code></pre>
+<pre><code class="lang-javascript">  waitForAnswer()
+    .then(useAnswer)
+    .catch(handleError);
+</code></pre>
+<pre><code class="lang-javascript">  waitForAnswer()
+    .catch(logErrorAndReturnDefault)
+    .then(useAnswerOrDefault)
+</code></pre>
+<pre><code class="lang-javascript">  const p1 = waitForAnswer();
+  const p2 = p1.then(answer =&gt; console.log(answer));
+  const p3 = p1.then(answer =&gt; answer * 2);
+  p2.then(console.log);
+  p3.then(console.log);
+</code></pre>
+</section><section><h2>Creating promises</h2><pre><code class="lang-javascript">  const waitOneMinute = new Promise((resolve, reject) =&gt; {
+    setTimeout(resolve, 60 * 1000);
+  });
+
+  waitOneMinute.then(doStuff);
+</code></pre>
+<pre><code class="lang-javascript">  const ajax = ({ method = &#39;GET&#39;, url, data = null }) =&gt; new Promose((resolve, reject) =&gt; {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () =&gt; {
+      if (xhr.state === 4) {
+        if (xhr.error) { reject(xhr.error); }
+        else { resolve(xhr.responseText); }
+      }
+    };
+
+    xhr.open(method, url);
+    xhr.send(data)
+  });
+
+  ajax({ url: &#39;api.mysite.com&#39; })
+    .catch(handleError)
+    .then(useData);
+</code></pre>
+</section><section><h2>Promise methods</h2><pre><code class="lang-javascript">  Promose.resolve(21)
+    .then(number =&gt; number * 2)
+    .then(number =&gt; console.log(number));
+
+  Promise.reject(&#39;Error&#39;)
+    .catch(error =&gt; {
+      console.log(error);
+    });
+
+   Promise.all([
+     ajax(&#39;myScript.js&#39;),
+     ajax(&#39;myStyles.css&#39;)
+     ajax(&#39;myData.json&#39;),
+   ]).then(([script, styles, data]) =&gt; {
+     // all 3 resources are available here
+   });
+
+   Promise.race([
+     ajax(&#39;source1/data.json&#39;),
+     ajax(&#39;source2/data.json&#39;)
+   ]).then(data =&gt; {
+     // gets the data from the first source to succeed
+   });
+</code></pre>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

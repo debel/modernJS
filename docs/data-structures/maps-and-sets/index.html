@@ -1,0 +1,67 @@
+<html>
+
+<head>
+  <title>Modern JS : </title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Sets</h1><pre><code class="lang-javascript"> const uniqueNumbers = new Set();
+
+ uniqueNumbers.add(1);
+ uniqueNumbers.add(1);
+ uniqueNumbers.add(2);
+ uniqueNumbers.add(3);
+
+ uniqueNumbers.delete(1);
+
+ uniqueNumbers.has(5);
+</code></pre>
+</section><section><h1>Maps</h1><pre><code class="lang-javascript">
+  const map = new Map();
+
+  map.set(&#39;key&#39;, &#39;value&#39;);
+  map.get(&#39;key&#39;);
+
+  map.has(&#39;key&#39;);
+
+  map.delete(&#39;key&#39;);
+</code></pre>
+</section><section><h1>Weak Sets / Weak Maps</h1><p>These data structures are intended to prevent memory leaks. They do not hold references to the data they contain. Garbage collection can destroy data inside them.</p>
+<p>As such, they are not iterable (they don&#39;t have a <code>forEach</code> method) and no <code>size</code> method.</p>
+</section><section><h1>Weak Sets / Weak Maps</h1><pre><code class="lang-javascript">  const reclamables = new WeakSet();
+  let obj = {};
+
+  reclamables.add(obj);
+  reclamables.has(obj); // true
+
+  obj = null;
+  reclamables.has(obj); // false
+</code></pre>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

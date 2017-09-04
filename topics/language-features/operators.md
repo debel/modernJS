@@ -1,3 +1,6 @@
+---
+  title: Operators
+---
 # Operators
 
 ## Binary Operators

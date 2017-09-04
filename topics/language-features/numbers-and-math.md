@@ -1,3 +1,6 @@
+---
+  title: Math and numbers
+---
 # Numbers and Math
 
 ## The number type

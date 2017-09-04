@@ -1,0 +1,61 @@
+<html>
+
+<head>
+  <title>Modern JS : </title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Browser</h1><p>The browser is both powerful and restricted at the same time.</p>
+</section><section><h2>Capabilities</h2><ul>
+<li>networking (multiple complex protocols)</li>
+<li>rendering (html, images, video, canvas, webGL, print)</li>
+<li>user-media (mic, camera, geolocation, joysticks)</li>
+<li>file system access (very restricted, user-driven)</li>
+</ul>
+</section><section><h2>Browser APIs</h2></section><section><h3>DOM</h3><pre><code class="lang-javascript">  const element = document.getElementById(&#39;main_content&#39;);
+</code></pre>
+<pre><code class="lang-javascript">  const element = document.querySelector(&#39;#byId&#39;);
+  const elements = document.querySelectorAll(&#39;.byClassName&#39;);
+</code></pre>
+<pre><code class="lang-javascript">  element.addEventListener(&#39;eventName&#39;, function () {
+    // handle each event e.g. click
+  });
+</code></pre>
+<p><em>Anti-Pattern</em></p>
+<pre><code class="lang-javascript">  /* !!! THIS IS BAD CODE!!! */
+  document.write(&quot;&lt;h1&gt;Content&lt;/h1&gt;&quot;);
+</code></pre>
+<pre><code class="lang-javascript">  document.body.innerHTML = &quot;&lt;h1&gt;Content&lt;/h1&gt;&quot;
+</code></pre>
+<p>```javascript
+  var title = document.createElement(&quot;h1&quot;);
+  title.textContent = &quot;Content&quot;;
+  document.body.appendChild(title);</p>
+</section><section><h3>Local Storage</h3></section><section><h3>User Media</h3></section><section><h3>Service Workers</h3>
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

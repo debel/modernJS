@@ -1,3 +1,6 @@
+---
+  title: Classes
+---
 # Classes
 
 ## Declaration

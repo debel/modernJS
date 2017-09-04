@@ -1,0 +1,78 @@
+<html>
+
+<head>
+  <title>Modern JS : Conditionals</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Conditionals</h1></section><section><h2>comparators</h2><pre><code class="lang-javascript">  a == b;
+  a === b;
+
+  a != b;
+  a !== b;
+
+  a &gt; b;
+  a &gt;= b;
+
+  a &lt; b;
+  a &lt;= b;
+</code></pre>
+</section><section><h2>logical operators</h2><pre><code class="lang-javascript">  a &amp;&amp; b;
+  a || b;
+</code></pre>
+</section><section><h2>if</h2><pre><code class="lang-javascript">  if (condition) {
+
+  } else {
+    if (check) {
+
+    } else if (fallback) {
+
+    }
+  }
+</code></pre>
+</section><section><h2>ternary</h2><pre><code class="lang-javascript">  const result = condition ? resultIfTrue : resultIfFalse;
+</code></pre>
+</section><section><h2>switch</h2><pre><code class="lang-javascript">  switch (condition) {
+    case value1:
+      doStuff();
+      break;
+    case value2:
+      doOtherStuff();
+      break;
+    default:
+      doDefaultStuff();
+  }
+</code></pre>
+</section><section><h2>pattern matching</h2><pre><code>  switch (expression) {
+    case [a, b, ...c]:
+    case { name, age }:
+    default:
+  }
+</code></pre>
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

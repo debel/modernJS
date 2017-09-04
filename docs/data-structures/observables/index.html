@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <title>Modern JS : Observables</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Observables</h1></section><section><h2>Push/Pull</h2></section><section><h3>Events are a push mechanism.</h3><p>The consumer <code>handleEvent</code> is just a callback.
+We have no guarantees when or how many times it would be called. The producer has full control.</p>
+<pre><code class="lang-javascript">  producer.on(&#39;event&#39;, handleEvent);
+</code></pre>
+</section><section><h3>Generators are a pull mechanism.</h3><p>The consumer requests data from the producer through the <code>next</code> method. The producer has no control over when the data is handled.</p>
+<pre><code class="lang-javascript">  function* producer() { /*...*/ };
+
+  const consumer = producer();
+  const dataPoint1 = consumer.next(); // { value, done }
+  const dataPoint2 = consumer.next(); // { value, done }
+</code></pre>
+</section><section><h2>Observables</h2><p>```javascript
+  const observable = Observable.from(event);
+  const subscription = observable.subscribe({
+    next(value) { },
+    error(error) { },
+    done() { }
+  });</p>
+</section><section><h2>Composability</h2>
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

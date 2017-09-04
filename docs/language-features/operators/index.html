@@ -1,0 +1,59 @@
+<html>
+
+<head>
+  <title>Modern JS : Operators</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Operators</h1></section><section><h2>Binary Operators</h2><pre><code class="lang-javascript">    a &amp;&amp; b; // logical AND; short circuit, returns value (not boolean)
+    a || b; // logical OR; short circuit, returns value (not boolean)
+
+    a &lt;&lt; 1 // bitwise shift left, preserves the sign
+    a &gt;&gt; 1 // bitwise shift right, preserves the sign
+    a &gt;&gt;&gt; 1 // bitwise shift right, disregards sign
+
+    a &amp; 0; // bitwise AND
+    a | 0; // bitwise OR
+    a ^ 0; // bitwise XOR
+
+    a = 1; // assigns the value 1 to the variable &quot;a&quot;
+    a += 1; // increment the value of the variable &quot;a&quot;
+    a -= 1; // decrement the value of the variable &quot;a&quot;
+    a *= 1; // multiply the value of the variable &quot;a&quot;
+</code></pre>
+</section><section><h2>Unary Operators</h2><pre><code class="lang-javascript">  typeof a;
+
+  !a // logical NOT
+  ~a // bitwise NOT
+
+  +a // unary plus
+  -a // unary minus
+</code></pre>
+</section><section><h2>Operator precedence</h2>
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

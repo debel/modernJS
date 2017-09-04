@@ -1,0 +1,77 @@
+<html>
+
+<head>
+  <title>Modern JS : Loops</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Loops</h1></section><section><h2>Counting</h2><pre><code class="lang-javascript">  let i = 5;
+  while (i &gt; 0) {
+    doStuff();
+  }
+</code></pre>
+<pre><code class="lang-javascript">  for (let i = 0; i &lt; 5; i += 1) {
+    doStuff();
+  }
+</code></pre>
+</section><section><h2>Enumeration</h2><pre><code class="lang-javascript">  const array = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+  for (const index in array) {
+    console.log(index); // 0, 1, 2
+    console.log(array[index]); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+  }
+</code></pre>
+<pre><code class="lang-javascript">  const array = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];
+  for (const item of array) {
+    console.log(item); // &#39;a&#39;, &#39;b&#39;, &#39;c&#39;
+  }
+</code></pre>
+</section><section><h2>Recursion</h2><pre><code class="lang-javascript">  function countdown(n) {
+    console.log(n);
+    if (n &gt; 0) {
+      countdown(n - 1);
+    }
+  }
+</code></pre>
+</section><section><h2>Scheduling</h2><pre><code class="lang-javascript">  setInterval(
+    () =&gt; { console.log(&#39;gets called each second&#39;); },
+    1000
+  );
+</code></pre>
+<pre><code class="lang-javascript">  const countdown = (n) =&gt; {
+    console.log(n);
+    if (n &gt; 0) {
+      setTimeout(
+        () =&gt; countdown(n - 1),
+        1000
+      );
+    }
+  };
+</code></pre>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

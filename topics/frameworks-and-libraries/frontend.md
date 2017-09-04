@@ -2,10 +2,10 @@
 
 ## Client-side rendering
 
+## State Management
+
 ## React
 
 ## Vue
 
 ## Angular
-
-## State Management

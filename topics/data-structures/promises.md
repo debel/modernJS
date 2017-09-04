@@ -1,3 +1,6 @@
+---
+  title: Promises
+---
 # Promises
 
 ## Using promises

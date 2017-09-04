@@ -4,7 +4,7 @@
   "description": "Lectures and materials for INF310a Modern JavaScript",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
+    "build": "node metal.js && sh ./node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -30,3 +30,20 @@
 ```
 
 # Weak Sets / Weak Maps
+
+These data structures are intended to prevent memory leaks. They do not hold references to the data they contain. Garbage collection can destroy data inside them.
+
+As such, they are not iterable (they don't have a `forEach` method) and no `size` method.
+
+# Weak Sets / Weak Maps
+
+```javascript
+  const reclamables = new WeakSet();
+  let obj = {};
+
+  reclamables.add(obj);
+  reclamables.has(obj); // true
+
+  obj = null;
+  reclamables.has(obj); // false
+```

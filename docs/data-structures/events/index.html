@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <title>Modern JS : Events</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Events</h1></section><section><h2>DOM Events</h2><p>DOM events represent interactions from the user or the browser APIs.</p>
+</section><section><h3>Listening for events</h3><pre><code class="lang-javascript">  const button = document.getElementById(&#39;btn1&#39;);
+
+  button.addEventListener(&#39;click&#39;, function (clickEvent) {
+    console.log({ element: this, clickEvent });
+  });
+</code></pre>
+</section><section><h3>Triggering Events</h3><pre><code class="lang-javascript">  const button = document.getElementById(&#39;btn1&#39;);
+
+  var aClick = new MouseEvent(&#39;click&#39;, {
+    &#39;view&#39;: window,
+    &#39;bubbles&#39;: true,
+    &#39;cancelable&#39;: true
+  });
+
+  button.dispatchEvent(aClick);
+</code></pre>
+</section><section><h2>Custom Events in Browser</h2><pre><code class="lang-javascript">  // Listening for events on a DOM element (e.g. document)
+  document.addEventListener(
+    &#39;myCustomEvent&#39;,
+    function ({ detail }) =&gt; console.log(detail)
+  );
+
+  // Trigger the event
+  const myEvent = new CustomEvent(
+    &#39;myCustomEvent&#39;,
+    { detail: &#39;custom properties&#39; }
+  );
+
+  document.dispatchEvent(myEvent);
+</code></pre>
+</section><section><h2>Events in NodeJS</h2><pre><code class="lang-javascript">  const EventEmitter = require(&#39;events&#39;).EventEmitter;
+  const source = new EventEmitter();
+
+  source.on(&#39;eventName&#39;, callback);
+  source.once(&#39;eventName&#39;, callback);
+
+  source.emit(&#39;eventName&#39;, payload);
+</code></pre>
+</section><section><h2>WebSockets</h2><pre><code class="lang-javascript">  websocket.on(&#39;connection&#39;, socket =&gt; {
+    socket.emit(&#39;hello&#39;);
+    socket.on(&#39;message&#39;, console.log);
+  });
+</code></pre>
+</section><section><h2>Patterns</h2><p>Events are a great mechanism to implement various patterns.</p>
+</section><section><h3>Fan-out</h3><p>An event with a single producer and multiple consumers.</p>
+<pre><code class="lang-javascript">  // these can be defined in different parts of the system
+  btn.on(&#39;click&#39;, updateUI);
+  btn.on(&#39;click&#39;, updateDB);
+  btn.on(&#39;click&#39;, logsAndMetrics);
+</code></pre>
+</section><section><h3>Fan-in</h3><p>An event with a multiple producers and (possibly) a single consumers.</p>
+<pre><code class="lang-javascript">  // multiple modules fire the same event
+  lobby.emit(&#39;ready&#39;, player);
+
+  //the lobby module pairs players in games
+  lobby.on(&#39;ready&#39;, startWhenTwoPlayers);
+</code></pre>
+</section><section><h3>Pub/Sub</h3><p>An event with multiple topics. Events are a natural implementation of the pub/sub pattern.</p>
+<p>It allows us to decouple the producers and consumers (publishers and subscribers) of a messaging system.</p>
+<pre><code class="lang-javascript">  topics.on(&#39;new-items&#39;, handleMyMessage);
+  topics.on(&#39;my-message&#39;, handleMyMessage);
+  topics.on(&#39;another-message&#39;, handleMyMessage);
+
+  topics.emit()
+</code></pre>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

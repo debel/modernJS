@@ -1,0 +1,35 @@
+<html>
+
+<head>
+  <title>Modern JS : {{ title }}</title>
+  <style>
+    #main-header {
+      color: white;
+      font-size: 2em;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      text-align: right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+      <h1>Language features</h1>
+      {{#each collections.languageFeatures}}
+        <a href="../{{this.path}}">{{this.title}}</a>
+      {{/each}}
+    </ul>
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

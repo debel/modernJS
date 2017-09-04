@@ -1,1 +1,4 @@
+---
+  title: Scopes
+---
 # Scopes

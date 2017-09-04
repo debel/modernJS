@@ -1,3 +1,6 @@
+---
+  title: Strings
+---
 # Strings
 
 ## String literals

@@ -1,0 +1,203 @@
+<html>
+
+<head>
+  <title>Modern JS : Functions</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Functions</h1></section><section><h2>Anatomy of a function</h2><p>Functions are objects that inherit from <code>Function.prototype</code>.
+To become a function, an object must implement
+the <code>[[Call]]</code> and <code>[[Construct]]</code> internal methods.</p>
+</section><section><h2>Anatomy of a function</h2><p>Functions have a <code>declaration</code>, also called a <code>function signature</code> and a <code>body</code>.
+The <code>declaration</code> contains an optional name and a list of parameters.
+The body is a code block (ordered statements).</p>
+</section><section><h2>Anatomy of a function</h2><p>All functions can return a value through the <code>return</code> statement.
+Arrow functions return the value of the last expression.
+If no explicit value is specified, the <code>undefined</code> value is returned by default.</p>
+<p>Executing a function creates a new internal <code>scope</code> object.</p>
+</section><section><h2>Properties</h2><pre><code class="lang-javascript">  // the number of parameters the function formally accepts
+  f.length
+</code></pre>
+</section><section><h2>Statement vs expression form</h2><p>Both forms define a function value and bind it to a variable with the given name.
+But function statements are hoisted. The following two snippets of code are equivalent.</p>
+<pre><code class="lang-javascript">  // a function statement, the name is mandatory
+  function identity(parameter) {
+    return parameter;
+  }
+</code></pre>
+<pre><code class="lang-javascript">  // a function expression
+  var identity = function identity(parameter) {
+    return parameter;
+  };
+</code></pre>
+</section><section><h2>Arrow functions</h2><pre><code class="lang-javascript">  // single argument arrow function declaration
+  // returns the value of the last (and only) expression
+  const identity = id =&gt; id;
+
+  // multiple parameters
+  const add = (a, b) =&gt; a + b;
+
+  // with a function body
+  const validate = (input) =&gt; {
+    if (input !== &#39;correct&#39;) {
+      throw new Error(&#39;not correct&#39;);
+    }
+  };
+</code></pre>
+</section><section><h2>Methods</h2><p>A method is a function which is assigned as a property of an object.</p>
+<pre><code class="lang-javascript">  // es5
+  var object = {
+    method: function () { doStuff(); }
+  };
+
+  // es6
+  const object = {
+    method() { doStuff(); }
+  };
+</code></pre>
+</section><section><h3>Calling context</h3><p>When using dot notation to invoke a method e.g. <code>object.method()</code>
+the value of <code>this</code> in the scope of the function execution
+is assigned the <code>object</code> value.</p>
+<pre><code class="lang-javascript">const getFullName = function fullName() {
+  return `${this.firstName} ${this.lastName}`;
+}
+
+const person  = {
+  firstName: &#39;John&#39;,
+  lastName: &#39;Doe&#39;,
+  getName: getFullName
+};
+
+person.getName(); // returns &quot;John Doe&quot;
+</code></pre>
+</section><section><h3>Arrows are not methods</h3><p>Arrow functions used as methods have their <code>this</code> assigned to the <code>this</code> value of the outer scope.
+Their <code>this</code> <strong>is NOT</strong> the object from their invocation.</p>
+<pre><code class="lang-javascript">// this = undefined
+const getFullName = () =&gt; `${this.firstName} ${this.lastName}`;
+
+const person  = {
+  firstName: &#39;John&#39;,
+  lastName: &#39;Doe&#39;,
+  getName: getFullName
+};
+
+person.getName(); // throws an error
+</code></pre>
+</section><section><h2>Lexical scopes</h2><p>Functions have access to the scope containing their definition,
+and it&#39;s parent scopes.</p>
+<pre><code class="lang-javascript">function factory(factoryOptions) {
+  const config = getConfig();
+
+  return function instance(instanceOptions) {
+    // this function can acces all of these:
+    factoryOptions,
+    instanceOptions,
+    config
+  };
+}
+</code></pre>
+</section><section><h2>Execution context</h2><p>The <code>apply</code> and <code>call</code> methods on <code>Function.prototype</code> allow us
+to execute functions with explicitly set parameters and <code>this</code> value.</p>
+<pre><code class="lang-javascript">  function f(x) { return x * (this.y + this.z); }
+  const useAsThis = { y:1, z: 2 };
+  const parameter1 = 5;
+
+   // executes the function with context as the &quot;this&quot; argument
+  f.call(useAsThis, parameter1, parameter2);
+
+  // executes the function with context as the &quot;this&quot; argument
+  f.apply(useAsThis, [parameter1, parameter2]);
+</code></pre>
+</section><section><h2>Patterns</h2></section><section><h3>IEFE</h3><p>This pattern is going out of style due to proper module semantics
+in the new versions of JavaScript</p>
+<pre><code class="lang-javascript">// the IEFE pattern:
+// declare a function and execute it immediately
+(function () {
+  var data = getData();
+  superCoolLibrary.render(data);
+}());
+</code></pre>
+</section><section><h3>Pseudo-modules</h3><p>This pattern is going out of style due to proper module semantics
+in the new versions of JavaScript</p>
+<pre><code class="lang-javascript">// this is an old module pattern:
+// assign the result of an IEFE to a variable
+// variables in the IEFE&#39;s scope are private to the module
+var myModule = (function () {
+  var privateVar = &#39;private&#39;;
+
+  return {
+    publicMethod() {
+      return privateVar;
+    }
+  };
+}());
+
+myModule.publicMethod(); // &quot;private&quot;
+myModule.privateVar // undefined
+</code></pre>
+</section><section><h3>Higher Order Functions</h3><p>Higher order functions are the bread and butter of functional programming</p>
+<pre><code class="lang-javascript">  array.filter(element =&gt; isValid(element));
+
+  setTimeout(function () {
+    console.log(&quot;this is a callback&quot;);
+  }, 1000);
+
+  http.createServer((request, response) =&gt; {
+    response.send(&#39;hello world!&#39;);
+  });
+</code></pre>
+</section><section><h3>Currying</h3><pre><code class="lang-javascript">  // Currying
+  function name(family) {
+    return function (personal) {
+      return `${personal} ${family}`;
+    }
+  }
+  // with an arrow function
+  const name = family =&gt; personal =&gt; `${personal} ${family}`;
+
+  // usage
+  const simpson = name(&#39;Simpson&#39;);
+  const homer = simpson(&#39;Homer&#39;);
+  const marge = simpson(&#39;Marge&#39;);
+  const bart = name(&#39;Simpson&#39;)(&#39;Bart&#39;);
+</code></pre>
+</section><section><h3>Bind</h3><pre><code class="lang-javascript">  function name(family, personal) {
+    return `${personal} ${family}`;
+  }
+
+  const magy = name(&#39;Simpson&#39;, &#39;Magy&#39;);
+
+  // bind returns a new function
+  // first argument will be used for &quot;this&quot;
+  const simpson = func.bind(null, &#39;Simpson&#39;);
+
+  const lisa = simpson(&#39;Lisa&#39;);
+</code></pre>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

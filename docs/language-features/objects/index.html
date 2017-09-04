@@ -1,0 +1,221 @@
+<html>
+
+<head>
+  <title>Modern JS : Objects</title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Objects</h1><p>In JavaScript an object is just a bag of properties.</p>
+</section><section><h2>Creating Objects</h2><ul>
+<li><code>{} /* object literal */</code></li>
+<li><code>new Constructor()</code></li>
+<li><code>Object.create(prototype)</code></li>
+<li><code>Factory pattern</code></li>
+</ul>
+</section><section><h2>Object literals</h2><p>ES6 introduces a new property shorthand.
+In the example below, the <code>hobby</code> variable is used
+as a property of the <code>person</code> object.</p>
+<pre><code class="lang-javascript">  const hobby = &#39;juggling&#39;;
+  const person = {
+    hobby
+    name: &#39;Misho&#39;,
+    age: 30,
+  };
+</code></pre>
+</section><section><h2>Methods</h2><p>A method is a function that is used as a property of an object.</p>
+<p>ES6 introduces a new shorthand for defining methods.
+In the below example <code>es5Method</code> and <code>es5Method</code> are equivalent.
+However <code>notAMethod</code> is different because of its <code>this</code> argument.</p>
+<pre><code class="lang-javascript">  const object = {
+    es5Method: function () {},
+    es5Method() {},
+    notAMethod: () =&gt; {}
+  }
+</code></pre>
+</section><section><h2>Properties</h2><p>ES6 introduces dynamic property keys using bracket <code>[]</code> syntax.
+<em>Remember:</em> all object keys are strings</p>
+<pre><code class="lang-javascript">  const getC = () =&gt; &#39;c&#39;;
+  const object = {
+    a: 1,
+    &#39;b&#39;: 2,
+    [getC()]: 3,
+  }
+</code></pre>
+<p>Properties are themselves objects with special flags.</p>
+<ul>
+<li>configurable: property cannot be removed</li>
+<li>enumerable: property is not listed</li>
+<li>writable: the property&#39;s value cannot be changed<pre><code class="lang-javascript">Object.getOwnPropertyDescriptors({ id: &#39;1&#39;, data: &#39;nom nom&#39;});
+// returns:
+{
+  id: {
+    value: &#39;1&#39;,
+    configurable: true,
+    enumerable: true,
+    writable: true
+  }, //...
+}
+</code></pre>
+</li>
+</ul>
+<p>You can set these special flags when defining properties.</p>
+<pre><code class="lang-javascript">  Object.defineProperty(myObject, &#39;newKey&#39;, { writable: false, value: 42 });
+  Object.defineProperties(myObject, {
+    &#39;newKey_1&#39;: { enumerable: false, value: &#39;kind of hidden&#39; },
+    &#39;newKey_2&#39;: { configurable: false, value: &#39;can\&#39;t delete this&#39;}
+  });
+</code></pre>
+</section><section><h3>Getters and Setters</h3><p>Properties that execute a <code>get</code> function when the property is accessed and a <code>set</code> function when it is assigned a value.</p>
+<p><em>Anti-Pattern</em> This should be used carefully. It creates side effects that are hard to detect and reason about.</p>
+<pre><code class="lang-javascript">  const thermometer = Object.defineProperty({ c: 22 }, &#39;f&#39;, {
+    get() { return this.c * 1.8 + 32; },
+    set(v) { this.c = (v - 32) / 1.8 }
+  });
+
+  thermometer.f // 71.6
+  thermometer.f = 100
+  thermometer.c // 37.7
+</code></pre>
+</section><section><h2>The Object object</h2><p><code>Object</code> has many useful methods and properties.</p>
+<p>Get an array of the names of all enumerable properties of an object.</p>
+<pre><code class="lang-javascript">  const myProperties = Object.keys(myObject);
+</code></pre>
+<p>Get an array of the values of the properties of an object.</p>
+<pre><code class="lang-javascript">  const myValues = Object.values(myValues);
+</code></pre>
+<p>Creates a new object containing all the properties of the
+<code>defaultData</code> and <code>userData</code> objects (users override defaults).</p>
+<pre><code class="lang-javascript">  const fullData = Object.assign({}, defaultData, userData);
+
+  // alternatively use the object spread draft specification
+  const fullData = { ...defaultData, ...userData };
+</code></pre>
+<p>Objects also have special flags attached to them.</p>
+<p>Disallow adding new properties to an object.</p>
+<pre><code class="lang-javascript">  const pointA = Object.preventExtensions({ x: 0, y: 0 });
+  pointA.x = 15; // no problem
+  pointA.z = 0; // throws or fails silently
+  delete pointA.y; // success, but now it&#39;s a 1d point...
+</code></pre>
+<p>Disallow removing properties.</p>
+<pre><code class="lang-javascript">  const pointB = Object.seal({ x: 0, y: 0 });
+  pointB.x = 15; // no problem
+  pointB.z = 0; // throws or fails silently
+  delete pointB.y; // throws or fails silently
+</code></pre>
+<p>Make an object immutable.</p>
+<pre><code class="lang-javascript">  const pointC = Object.freeze({ x: 0, y: 0 });
+  pointC.x = 15; // throws or fails silently
+  pointC.z = 0; // throws or fails silently
+  delete pointC.y; // throws or fails silently
+</code></pre>
+<p>There are corresponding function that check if an object is frozen, sealed
+or has disabled extensions.</p>
+<pre><code class="lang-javascript">  Object.isExtensible(pointA) // false
+  Object.isExtensible(pointB) // false
+  Object.isExtensible(pointC) // false
+
+  Object.isSealed(pointA) // false
+  Object.isSealed(pointB) // true
+  Object.isSealed(pointC) // true
+
+  Object.isFrozen(pointA) // false
+  Object.isFrozen(pointB) // false
+  Object.isFrozen(pointC) // true
+</code></pre>
+</section><section><h2>Prototypical inheritance</h2><p>JavaScript implements a prototype-based inheritance model.
+Each object has a special prototype field that points directly
+to another object (NOT a class).</p>
+<p>An object literal has the <code>Object.prototype</code> set as its prototype</p>
+<pre><code class="lang-javascript">  Object.getPrototypeOf({ a: 1 }) === Object.prototype // true
+  Object.getPrototypeOf([ 1, 2 ]) === Object.prototype // false
+  Object.getPrototypeOf([ 1, 2 ]) === Array.prototype // true
+  Object.getPrototypeOf(Array.prototype) === Object.prototype // true
+</code></pre>
+</section><section><h3>Object.create</h3><p>You can create objects with a specific prototype.
+If a property is missing when looking for properties
+using the <code>.</code> or <code>[]</code> syntax, the engine will
+search for it down the prototype chain.</p>
+<pre><code class="lang-javascript">  const rect1 = Object.create({ getArea() { return this.a * this.b; }});
+  rect1.a = 5;
+  rect1.b = 6;
+  rect1.getArea(); // 30
+</code></pre>
+<p>Prototypes are alive! Changing the prototype changes what inheriting objects see.</p>
+<pre><code class="lang-javascript">  const protoPerson = {
+    sayHi() { return `Hi, I&#39;m ${this.name}`}
+  };
+
+  // use can pass an object of property descriptors
+  // similarly to Object.defineProperties
+  const misho = Object.create(protoPerson, { name: { value: &#39;Misho&#39; }});
+  misho.sayHi(); // &quot;Hi, I&#39;m Misho&quot;
+
+  protoPerson.sayHi = function () {
+    return &#39;I forgot my name&#39;;
+  };
+  misho.sayHi(); // &quot;I forgot my name&quot;
+</code></pre>
+</section><section><h3>The new operator</h3><p>In order to creating objects using <code>new</code> we need a <code>constructor</code> function
+which sets the properties of the new object. The prototype of the new object is set to the constructor function&#39;s prototype property.</p>
+<pre><code class="lang-javascript">  function Rect(a,b) {
+    this.a = a;
+    this.b = b;
+  }
+
+  Point.prototype.getArea = function () {
+    return this.a * this.b;
+  };
+
+  const rect1 = new Rect(5, 6);
+  rect1.getArea(); // 30
+
+  rect1.constructor; // the Rect function
+</code></pre>
+</section><section><h2>Patterns</h2></section><section><h3>Factory function</h3><pre><code class="lang-javascript">  function createTaxi(driver) {
+    // use any object creation technique
+    const taxi = createCar();
+    taxi.driver = driver;
+    taxi.meter = new Meter();
+
+    taxi.on(&#39;start&#39;, taxi.meter.start);
+    taxi.on(&#39;stop&#39;, taxi.meter.stop);
+
+    return taxi;
+  }
+</code></pre>
+</section><section><h3>Objects as maps</h3><pre><code class="lang-javascript">  const translations = {
+    en: &#39;Hello&#39;,
+    bg: &#39;Здравейте&#39;
+  };
+
+  const sayHi = (lang) =&gt; translations[lang] || translations[&#39;en&#39;];
+</code></pre>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

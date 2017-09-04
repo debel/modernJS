@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title>Modern JS : </title>
+  <style>
+    #main-header {
+      font-size: 2em;
+      color: white;
+      font-family: "Source Sans Pro", Helvetica, sans-serif;
+    }
+
+    #back-link, #back-link:hover {
+      float:right;
+      font-size: 1em;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .reveal ul {
+      list-style: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+        </section><section><h1>Application structure</h1></section><section><h2>Organized by technical type</h2><pre><code>src/models
+  - user-model.js
+  - payment-model.js
+src/views
+  - user-view.js
+  - payment-view.js
+src/controllers
+
+test/models/
+test/views/
+test/controllers
+
+documentation/
+</code></pre><ul>
+<li>Number of directories is constant</li>
+<li>All directories grows with the addition of new modules</li>
+<li>Top level view of frame-work, not intent</li>
+<li>Modules are spread across multiple directories</li>
+</ul>
+</section><section><h2>Organized by business function</h2><pre><code>src/users
+  - api-client.js
+  - component.js
+  - tests.js
+  - readme.md
+  - config.json
+src/orders
+src/payments
+</code></pre><ul>
+<li>Each module includes its code, tests, documentation and configuration</li>
+<li>Number of files per directory is constant</li>
+<li>Number of directories grows with the number of business modules</li>
+<li>Each module is potentially independent</li>
+</ul>
+
+    </div>
+  </div>
+  <script src="/docs/build/index.js"></script>
+</body>
+
+</html>

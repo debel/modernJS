@@ -1,3 +1,6 @@
+---
+  title: Modules
+---
 # Modules
 
 ## Global scope

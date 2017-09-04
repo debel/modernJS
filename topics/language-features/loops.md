@@ -1,3 +1,6 @@
+---
+  title: Loops
+---
 # Loops
 
 ## Counting
