@@ -34,8 +34,6 @@ The consumer requests data from the producer through the `next` method. The prod
     error(error) { },
     done() { }
   });
-
-
-
+```
 
 ## Composability
