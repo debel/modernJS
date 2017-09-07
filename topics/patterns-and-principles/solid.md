@@ -1,6 +1,10 @@
-## SOLID Principles
+---
+  title: SOLID Principles
+---
 
-### Single Responsibility
+# SOLID Principles
+
+## Single Responsibility
 
 A module should have only one source of change.
 
@@ -23,7 +27,7 @@ Good:
   }
 ```
 
-### Open/Close
+## Open/Close
 
 A module should be open for extension and closed for modification.
 
@@ -32,7 +36,7 @@ A module should be open for extension and closed for modification.
 
 ```
 
-### Liskov substitution
+## Liskov substitution
 
 A module should be interchangeable with any module that implements the same interface.
 
@@ -85,11 +89,10 @@ hottestCity([
   }
 ```
 
-
-### Interface segregation
+## Interface segregation
 
 A module should use local data objects and not depend on objects from other sub-systems.
 
-### Dependency inversion
+## Dependency inversion
 
 The specific implementation should depend on the abstracted business logic

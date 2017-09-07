@@ -1,3 +1,7 @@
+---
+  title: Debugging
+---
+
 # Debugging
 
 ## The console

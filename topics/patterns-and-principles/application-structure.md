@@ -1,3 +1,7 @@
+---
+  title: Application structure
+---
+
 # Application structure
 
 ## Organized by technical type

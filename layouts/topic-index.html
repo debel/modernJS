@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>Modern JS : {{ title }}</title>
+</head>
+
+<body>
+  <header id="main-header">INF310: Modern JS, Fall 2017 <a id="back-link" href="../">Back</a></header>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>{{title}}</h2>
+        <ul>
+          {{#each collectionArray}}
+              {{#if this.nextPage}}
+                </ul></section><section><ul>
+              {{/if}}
+              {{#unless this.dontRender}}
+                <li><a href="../{{this.path}}">{{this.title}}</a></li>
+              {{/unless}}
+          {{/each}}
+        </ul>
+    </section>
+    </div>
+  </div>
+  <script src="/build/index.js"></script>
+</body>
+
+</html>

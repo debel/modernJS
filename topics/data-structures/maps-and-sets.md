@@ -1,3 +1,7 @@
+---
+  title: Maps and sets
+---
+
 # Sets
 
 ```javascript

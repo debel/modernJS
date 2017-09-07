@@ -5,6 +5,24 @@ const permalinks = require('metalsmith-permalinks');
 const layouts = require('metalsmith-layouts');
 const marked = require('marked');
 
+const markAndFilterIndex = collection => topic => {
+  if (topic.path.endsWith('index.md')) {
+    topic.layout = 'topic-index.html';
+    topic.dontRender = true;
+    topic.collectionArray = collection;
+    return false;
+  }
+
+  return true;
+}
+
+const markPageEnds = pageSize => (topic, index) => {
+  if (index !==0 && index % pageSize === 0) {
+    topic.nextPage = true;
+  }
+  return topic;
+};
+
 const renderer = new marked.Renderer();
 renderer.heading = (text, level) => `</section><section><h${level}>${text}</h${level}>`;
 renderer.link = (href, _, text) => `<a href="${href}">${text}</a>`;
@@ -17,10 +35,24 @@ metalsmith(__dirname)
   .destination('docs')
   .clean(true)
   .use(collections({
+    'languageFeatures': 'language-features/*.md',
     'dataStructures': 'data-structures/*.md',
-    'languageFeatures': 'language-features/*.md'
+    'hostEnvironments': 'host-environments/*.md',
+    'developmentTools': 'development-tools/*.md',
+    'frameworksAndLibraries': 'frameworks-and-libraries/*.md',
+    'patternsAndPrinciples': 'patterns-and-principles/*.md'
   }))
+  .use((files, metal, done) => {
+    Object.keys(metal._metadata.collections)
+      .forEach(collectionName => {
+        metal._metadata.collections[collectionName] =
+          metal._metadata.collections[collectionName]
+            .filter(markAndFilterIndex(metal._metadata.collections[collectionName]))
+            .map(markPageEnds(6));
+    });
+    done();
+  })
   .use(markdown({ renderer }))
   .use(permalinks())
-  .use(layouts({ engine: 'handlebars', default: 'no-title-slide.html' }))
+  .use(layouts({ engine: 'handlebars', default: 'default.html' }))
   .build(error => error ? console.error(error) : console.log('Markdown -> HTML OK'));

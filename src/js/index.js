@@ -6,8 +6,9 @@ require('reveal.js/css/reveal.css');
 require('reveal.js/css/theme/black.css');
 require('reveal.js/lib/css/zenburn.css');
 
-require('reveal.js/plugin/highlight/highlight');
+require('../css/index.css');
 
+require('reveal.js/plugin/highlight/highlight');
 
 reveal.initialize({
   width: 1024,

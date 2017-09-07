@@ -1,3 +1,7 @@
+---
+  title: Browsers
+---
+
 # Browser
 
 The browser is both powerful and restricted at the same time.

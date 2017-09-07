@@ -1,4 +1,8 @@
-# Static Code Analysis
+---
+  title: Static analysis
+---
+
+# Static Analysis
 
 ## Popular libraries
 

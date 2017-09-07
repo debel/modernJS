@@ -1,4 +1,8 @@
-  # Event loop
+---
+  title: Event loop
+---
+
+# Event loop
 
 ## Timers
 

@@ -1,3 +1,7 @@
+---
+  title: JSON
+---
+
 # JSON
 
 JSON stands for JavaScript Object Notation and is a subset of the language.

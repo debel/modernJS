@@ -1,13 +1,10 @@
 # INF310: ModernJS
 
-[About the course](/about-the-course/)
-
-[History](/history/)
-
-[Data structures](/data-structures/)
-
-[Development tools](/development-tools/)
-
-[Hosting environments](/hosting-environment/)
-
-[Language features](/language-features/)
+- [About the course](/about-the-course/)
+- [History](/history/)
+- [Language features](/language-features/)
+- [Data structures](/data-structures/)
+- [Host environments](/host-environments/)
+- [Development tools](/development-tools/)
+- [Frameworks and libraries](/frameworks-and-libraries/)
+- [Patterns and Principles](/patterns-and-principles/)

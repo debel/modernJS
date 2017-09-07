@@ -12,7 +12,7 @@
 
 ## Materials
 
-- [Syllabus](http://??)
+- [Syllabus](https://docs.google.com/document/d/1VTjRubw0Bx5LYIMJbjjCV6EN1Y5BkkDUWH5S3b0fU-Y/?usp=sharing)
 - [Slides](https://modern-js.github.io)
 - [GitHub](https://github.com/modern-js)
 - [Books](/books/)
@@ -21,7 +21,25 @@
 
 - [slack channel](https://modern-js.slack.com/)
 - [e-mail](mailto:mikov@aubg.edu)
-- in person: I will be at my office MB201 at 13h00 before the classes.
+- office hours: MB201 after 13h00 before classes.
+
+## Topics
+
+- Language design, features and data structures
+- Hosting environments and application domains
+- Development, testing and build tools
+- Frameworks and libraries
+- Principles, patterns and practices
+
+## Technologies
+
+- Mocha + Chai
+- Webpack + Babel
+- NodeJS + Express (Backend)
+- React + Redux (Frontend)
+- Johny5 (IoT)
+- Electron (Desktop)
+- React Native (Mobile)
 
 ## Assignments
 
@@ -37,21 +55,17 @@
 
 ### Homework assignments
 
-2 assignments, each worth 20% of the final grade.
-
-Each assignment will require students to personally:
-- implement a solution to the given problem
-- write tests to verify the solution (or TDD)
-- write a Readme file presenting your solution
-- push the solution to a new github repository
-
-These assignments will be due by the _3rd_, and the _5th_ day of classes.
+- 2 assignments, each worth 20% of the final grade.
+- Each assignment will require students to personally:
+  - implement a solution to the given problem
+  - write tests to verify the solution (or TDD)
+  - write a Readme file presenting the solution
+  - push the solution to a new github repository
+- These assignments will be due by the _3rd_, and the _5th_ day of classes.
 
 ### Test
 
-The test will be worth 15% of the final grade.
-
-It will cover all the material and consist of
+- The test will be worth 15% of the final grade.
+- It will cover all the material and consist of
 multiple choice - and short answer questions.
-
-It will be held on the _5th_ day of classes.
+- It will be held on the _5th_ day of classes.
