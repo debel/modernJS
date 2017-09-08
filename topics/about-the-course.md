@@ -10,6 +10,13 @@
 - graduated AUBG 2009
 - senior fullstack engineer at Skyscanner
 
+## Communication
+
+- [slack channel](https://modern-js.slack.com/)
+- [trello](https://trello.com/modernjs)
+- [e-mail](mailto:mikov@aubg.edu)
+- office hours: MB201 after 13h00 before classes.
+
 ## Materials
 
 - [Syllabus](https://docs.google.com/document/d/1VTjRubw0Bx5LYIMJbjjCV6EN1Y5BkkDUWH5S3b0fU-Y/?usp=sharing)
@@ -17,16 +24,11 @@
 - [GitHub](https://github.com/modern-js)
 - [Books](/books/)
 
-## Communication
-
-- [slack channel](https://modern-js.slack.com/)
-- [e-mail](mailto:mikov@aubg.edu)
-- office hours: MB201 after 13h00 before classes.
-
 ## Topics
 
-- Language design, features and data structures
-- Hosting environments and application domains
+- Language design and features
+- Data structures and algorithms
+- Host environments and application domains
 - Development, testing and build tools
 - Frameworks and libraries
 - Principles, patterns and practices
@@ -43,15 +45,15 @@
 
 ## Assignments
 
-- Lab sessions (3 x 15%)
+- Lab sessions (2 x 20%)
 - Homework assignments (2 x 20%)
-- Test (1 x 15%)
+- Test (1 x 20%)
 
 ### Lab sessions
 
 - 3 sessions, each worth 15% of the final grade.
 - Full instructions for each session will be provided in class.
-- Lab sessions will be held on the _2nd_, _3rd_ and _5th_ day of classes.
+- Lab sessions will be held on the _2nd_, and _4th_ day of classes.
 
 ### Homework assignments
 

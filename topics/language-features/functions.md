@@ -9,13 +9,13 @@ Functions are objects that inherit from `Function.prototype`.
 To become a function, an object must implement
 the `[[Call]]` and `[[Construct]]` internal methods.
 
-## Anatomy of a function
+## &nbsp;
 
 Functions have a `declaration`, also called a `function signature` and a `body`.
 The `declaration` contains an optional name and a list of parameters.
 The body is a code block (ordered statements).
 
-## Anatomy of a function
+## &nbsp;
 
 All functions can return a value through the `return` statement.
 Arrow functions return the value of the last expression.

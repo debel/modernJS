@@ -1,6 +1,7 @@
 ---
   title: Arrays
 ---
+
 # Arrays
 
 Arrays are objects with their prototype set to `Array.prototype`.
@@ -73,7 +74,7 @@ Return a copy of a sub array,
 starting from the given index and having the given length
 ```javascript
   const numbers = [1, 2, 3, 4, 5];
-  numbers.slice(1,2); // returns [2];
+  numbers.slice(0,2); // returns [1, 2];
 ```
 
 ### splice
@@ -89,7 +90,7 @@ adding, removing or replacing elements
 ### forEach
 Execute the given function on each element of the array.
 ```javascript
-  array.forEach((el) => doSomethingWith(el));
+  array.forEach((el) => console.log(el));
 ```
 
 ### some
@@ -116,11 +117,14 @@ Returns an array of the result of applying
 the given function to each element of the array.
 ```javascript
   const doubled = [1, 2, 3, 4, 5].map(number => number * 2);
+  // returns [2, 4, 6, 8, 10]
 ```
 
 ### reduce
 Accumulate a result by applying the given function to each element.
 ```javascript
   const summed = [1, 2, 3, 4, 5]
-    .reduce((result, number) => result + number, 0);
+    .reduce((result, number) => result + number, 0); // 15
 ```
+
+## Typed arrays

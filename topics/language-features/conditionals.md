@@ -26,6 +26,8 @@
   a || b;
 ```
 
+
+
 ## if
 
 ```javascript
@@ -62,12 +64,17 @@
   }
 ```
 
-## pattern matching
+## Pattern matching proposal
 
-```
-  switch (expression) {
-    case [a, b, ...c]:
-    case { name, age }:
-    default:
+```javascript
+  match (expression) {
+    [a, b, ...c]: use(a, b, c)
+    { name, age }: use(name, age)
+    else: { throw new Error(); }
   }
 ```
+
+## Links
+
+- [Comparison table](https://dorey.github.io/JavaScript-Equality-Table/)
+- [Pattern matching proposal](https://github.com/tc39/proposal-pattern-matching)

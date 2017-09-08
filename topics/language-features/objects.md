@@ -12,7 +12,7 @@ In JavaScript an object is just a bag of properties.
 - `Object.create(prototype)`
 - `Factory pattern`
 
-## Object literals
+### Object literals
 
 ES6 introduces a new property shorthand.
 In the example below, the `hobby` variable is used
@@ -27,18 +27,55 @@ as a property of the `person` object.
   };
 ```
 
+### The new operator
+
+To create objects using `new` we need a `constructor` function
+which sets the properties of the new object.
+
+The prototype of the new object is set
+to the constructor function's prototype property.
+
+```javascript
+  function Rect(a,b) {
+    this.a = a;
+    this.b = b;
+  }
+
+  Point.prototype.getArea = function () {
+    return this.a * this.b;
+  };
+
+  const rect1 = new Rect(5, 6);
+  rect1.getArea(); // 30
+
+  rect1.constructor; // the Rect function
+```
+
+### Object.create
+
+Creates objects with the specified prototype.
+```javascript
+  const rect1 = Object.create({
+    getArea() { return this.a * this.b; }
+  });
+
+  rect1.a = 5;
+  rect1.b = 6;
+  rect1.getArea(); // 30
+```
+
 ## Methods
 
 A method is a function that is used as a property of an object.
-
 ES6 introduces a new shorthand for defining methods.
-In the below example `es5Method` and `es5Method` are equivalent.
-However `notAMethod` is different because of its `this` argument.
+In the below example `es5Method` and `es6Method` are equivalent.
+However `arrowNotAMethod` is different because of its `this` argument.
+
 ```javascript
   const object = {
     es5Method: function () {},
-    es5Method() {},
-    notAMethod: () => {}
+    es6Method() {},
+    arrowNotAMethod: () => {}
   }
 ```
 
@@ -46,6 +83,7 @@ However `notAMethod` is different because of its `this` argument.
 
 ES6 introduces dynamic property keys using bracket `[]` syntax.
 *Remember:* all object keys are strings
+
 ```javascript
   const getC = () => 'c';
   const object = {
@@ -55,12 +93,17 @@ ES6 introduces dynamic property keys using bracket `[]` syntax.
   }
 ```
 
+### Property descriptors
+
 Properties are themselves objects with special flags.
 - configurable: property cannot be removed
 - enumerable: property is not listed
 - writable: the property's value cannot be changed
+
 ```javascript
-  Object.getOwnPropertyDescriptors({ id: '1', data: 'nom nom'});
+  Object.getOwnPropertyDescriptors(
+    { id: '1', data: 'nom nom'}
+  );
   // returns:
   {
     id: {
@@ -72,12 +115,19 @@ Properties are themselves objects with special flags.
   }
 ```
 
+### Defining properties
+
 You can set these special flags when defining properties.
 ```javascript
-  Object.defineProperty(myObject, 'newKey', { writable: false, value: 42 });
-  Object.defineProperties(myObject, {
-    'newKey_1': { enumerable: false, value: 'kind of hidden' },
-    'newKey_2': { configurable: false, value: 'can\'t delete this'}
+  Object.defineProperty(
+    myObject, 'newKey', { writable: false, value: 42 }
+  );
+
+  Object.defineProperties(
+    myObject,
+    {
+      'newKey_1': { enumerable: false, value: 'unlisted' },
+      'newKey_2': { configurable: false, value: 'here to stay'}
   });
 ```
 
@@ -87,21 +137,27 @@ Properties that execute a `get` function when the property is accessed and a `se
 
 *Anti-Pattern* This should be used carefully. It creates side effects that are hard to detect and reason about.
 ```javascript
-  const thermometer = Object.defineProperty({ c: 22 }, 'f', {
-    get() { return this.c * 1.8 + 32; },
-    set(v) { this.c = (v - 32) / 1.8 }
-  });
+  const thermometer = Object.defineProperty(
+    { c: 22 }, 'f', {
+      get() { return this.c * 1.8 + 32; },
+      set(v) { this.c = (v - 32) / 1.8 }
+    });
 
   thermometer.f // 71.6
   thermometer.f = 100
   thermometer.c // 37.7
 ```
 
-## The Object object
+## The `Object` object
 
 `Object` has many useful methods and properties.
 
+Almost all object inherit from `Object.prototype`.
+
+## Object.keys|values()
+
 Get an array of the names of all enumerable properties of an object.
+
 ```javascript
   const myProperties = Object.keys(myObject);
 ```
@@ -111,14 +167,19 @@ Get an array of the values of the properties of an object.
   const myValues = Object.values(myValues);
 ```
 
+### Object.assign()
+
 Creates a new object containing all the properties of the
 `defaultData` and `userData` objects (users override defaults).
+
 ```javascript
   const fullData = Object.assign({}, defaultData, userData);
 
   // alternatively use the object spread draft specification
   const fullData = { ...defaultData, ...userData };
 ```
+
+### Object.preventExtensions()
 
 Objects also have special flags attached to them.
 
@@ -130,6 +191,8 @@ Disallow adding new properties to an object.
   delete pointA.y; // success, but now it's a 1d point...
 ```
 
+### Object.seal()
+
 Disallow removing properties.
 ```javascript
   const pointB = Object.seal({ x: 0, y: 0 });
@@ -138,6 +201,8 @@ Disallow removing properties.
   delete pointB.y; // throws or fails silently
 ```
 
+### Object.freeze()
+
 Make an object immutable.
 ```javascript
   const pointC = Object.freeze({ x: 0, y: 0 });
@@ -145,6 +210,8 @@ Make an object immutable.
   pointC.z = 0; // throws or fails silently
   delete pointC.y; // throws or fails silently
 ```
+
+### Inspect an object
 
 There are corresponding function that check if an object is frozen, sealed
 or has disabled extensions.
@@ -164,68 +231,7 @@ or has disabled extensions.
 
 ## Prototypical inheritance
 
-JavaScript implements a prototype-based inheritance model.
-Each object has a special prototype field that points directly
-to another object (NOT a class).
-
-An object literal has the `Object.prototype` set as its prototype
-```javascript
-  Object.getPrototypeOf({ a: 1 }) === Object.prototype // true
-  Object.getPrototypeOf([ 1, 2 ]) === Object.prototype // false
-  Object.getPrototypeOf([ 1, 2 ]) === Array.prototype // true
-  Object.getPrototypeOf(Array.prototype) === Object.prototype // true
-```
-
-### Object.create
-
-You can create objects with a specific prototype.
-If a property is missing when looking for properties
-using the `.` or `[]` syntax, the engine will
-search for it down the prototype chain.
-```javascript
-  const rect1 = Object.create({ getArea() { return this.a * this.b; }});
-  rect1.a = 5;
-  rect1.b = 6;
-  rect1.getArea(); // 30
-```
-
-Prototypes are alive! Changing the prototype changes what inheriting objects see.
-```javascript
-  const protoPerson = {
-    sayHi() { return `Hi, I'm ${this.name}`}
-  };
-
-  // use can pass an object of property descriptors
-  // similarly to Object.defineProperties
-  const misho = Object.create(protoPerson, { name: { value: 'Misho' }});
-  misho.sayHi(); // "Hi, I'm Misho"
-
-  protoPerson.sayHi = function () {
-    return 'I forgot my name';
-  };
-  misho.sayHi(); // "I forgot my name"
-```
-
-### The new operator
-
-In order to creating objects using `new` we need a `constructor` function
-which sets the properties of the new object. The prototype of the new object is set to the constructor function's prototype property.
-
-```javascript
-  function Rect(a,b) {
-    this.a = a;
-    this.b = b;
-  }
-
-  Point.prototype.getArea = function () {
-    return this.a * this.b;
-  };
-
-  const rect1 = new Rect(5, 6);
-  rect1.getArea(); // 30
-
-  rect1.constructor; // the Rect function
-```
+See [Prototypes](../prototypes/)
 
 ## Patterns
 
@@ -245,13 +251,14 @@ which sets the properties of the new object. The prototype of the new object is 
   }
 ```
 
-
-### Objects as maps
+### Dictionary / Lookup
 ```javascript
   const translations = {
     en: 'Hello',
     bg: 'Здравейте'
   };
 
-  const sayHi = (lang) => translations[lang] || translations['en'];
+  const sayHi = (lang) => (
+    translations[lang] || translations['en']
+  );
 ```
