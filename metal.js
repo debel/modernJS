@@ -49,7 +49,7 @@ metalsmith(__dirname)
           metal._metadata.collections[collectionName]
             .sort((a, b) => (a.page || 99) - (b.page || 99))
             .filter(markAndFilterIndex)
-            .map(markPageEnds(6));
+            .map(markPageEnds(7));
     });
     done();
   })

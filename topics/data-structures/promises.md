@@ -90,13 +90,8 @@ a default value to the next `then function`
         else { resolve(xhr.responseText); }
       }
     };
-
     xhr.open(method, url); xhr.send(data);
   });
-
-  ajax({ url: 'api.mysite.com' })
-    .catch(handleError)
-    .then(useData);
 ```
 
 ## Promise methods

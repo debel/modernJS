@@ -44,3 +44,7 @@ src/payments
 - Number of files per directory is constant
 - Number of directories grows with the number of business modules
 - Each module is potentially independent
+
+## Links
+
+- [Best practices article](https://blog.codeminer42.com/nodejs-and-good-practices-354e7d763626)

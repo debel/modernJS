@@ -4,14 +4,13 @@
 
 # Static Analysis
 
-## Popular libraries
+- enforcing style and best practices
+- preventing errors and code smells
 
-### JSLint
+## ESLint
 
-### JSHint
+# Type systems
 
-### ESLint
+## Flow
 
-## Style guides
-
-### Airbnb
+## Typescript

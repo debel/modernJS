@@ -7,4 +7,5 @@
 - [Host environments](/host-environments/)
 - [Development tools](/development-tools/)
 - [Frameworks and libraries](/frameworks-and-libraries/)
-- [Patterns and Principles](/patterns-and-principles/)
+- [Patterns and principles](/patterns-and-principles/)
+- [Books and articles](/books-and-articles/)

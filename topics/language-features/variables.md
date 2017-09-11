@@ -16,26 +16,22 @@ page: 1
   const blockImmutable = 'block immutable';
 ```
 
-## Temporal Dead Zone (TDZ)
-
-```javascript
-  console.log(a); // undefined
-
-  var a = 5;
-```
-
-Use cannot use `let` and `const` variable
-before where they are declared in the code.
-
-```javascript
-  console.log(a); // throws an TDZ error
-
-  let a = 5;
-```
-
 ## Scope
 
-See [Scope](../scopes/)
+See [Scopes](../scopes/)
+
+## Destructing
+
+```javascript
+  const [x, y] = [1, 2];
+  // x = 1, y = 2
+
+  let { height } = { height: 1.83 };
+  // height = 1.83
+
+  const { dog: { name: dogName } } = { dog: { name: 'Barsa' } };
+  // dogName = 'Barsa'
+```
 
 ### Hoisting
 
@@ -58,17 +54,15 @@ The assignment remains at the same point in the code.
   }
 ```
 
-## Destructing
+## Temporal Dead Zone (TDZ)
+
+You cannot use `let` and `const` variable
+before where they are declared in the code.
 
 ```javascript
-  const [x, y] = [1, 2];
-  // x = 1, y = 2
+  console.log(a); // throws an TDZ error
 
-  let { height } = { height: 1.83 };
-  // height = 1.83
-
-  const { dog: { name: dogName } } = { dog: { name: 'Barsa' } };
-  // dogName = 'Barsa'
+  let a = 5;
 ```
 
 ## Bindings and references
@@ -76,15 +70,17 @@ The assignment remains at the same point in the code.
 Variables cannot reference other variables, only values.
 
 ```javascript
-  var x = 5;
-  var y = x;
-  x += 1;
-  console.log(y); // 5
-
-  var s = "hello";
-  var z = s;
+  let s = "hello";
+  let z = s;
+  // reassignment
   z += " world";
   console.log(s); // "hello"
+
+  const myObj = { msg: 'hello' };
+  const aRef = myObj;
+  // references the same object
+  aRef.msg += ' world';
+  console.log(myObj.msg) // 'hello world'
 ```
 
 ## Parameters and Values

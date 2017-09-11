@@ -101,3 +101,8 @@ Primitive values are immutable and only create a single instance per value.
 
 Internally JavaScript engines track the type of the arguments
 passed to every function call in order to optimize performance.
+
+
+## Links
+
+- [Primitive types vs Objects](http://blog.brew.com.hk/not-everything-in-javascript-is-an-object/)

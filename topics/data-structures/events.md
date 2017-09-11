@@ -29,6 +29,27 @@ DOM events represent interactions from the user or the browser APIs.
   button.dispatchEvent(aClick);
 ```
 
+### Event propagation / delegation
+
+Event bubbling means that event targeted at child nodes
+will execute the event handlers of the chain of parent nodes.
+
+```html
+  <h1>Select your favorite color:</h1>
+  <ul id="colors">
+    <li>Green</li>
+    <li>Blue</li>
+    <li>Red</li>
+  </ul>
+  <script>
+    document.getElementById('colors')
+      .addEventListener(
+        'click',
+        (event) => console.log(event.target.innerText)
+      );
+</script>
+```
+
 ## Custom Events in Browser
 
 ```javascript

@@ -22,7 +22,7 @@
 - [Syllabus](https://docs.google.com/document/d/1VTjRubw0Bx5LYIMJbjjCV6EN1Y5BkkDUWH5S3b0fU-Y/?usp=sharing)
 - [Slides](https://modern-js.github.io)
 - [GitHub](https://github.com/modern-js)
-- [Books](/books/)
+- [Books and articles](/books-and-articles/)
 
 ## Topics
 

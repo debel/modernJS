@@ -9,16 +9,22 @@
 - minifying
 - bundling
 - scaffolding
-- prepare resources and assets
+- preparing resources and assets
 
 ## Popular libraries
 
 ### Gulp
-docs: https://github.com/gulpjs/gulp/blob/master/docs/README.md
+
+Docs: https://github.com/gulpjs/gulp/blob/master/docs/README.md
 
 ### Webpack
-docs: https://webpack.js.org/
 
-### npm
+Docs: https://webpack.js.org/
 
-### Rollup
+## Running tasks
+
+### npm tasks
+
+## Links
+
+- [Guide to gulp](https://jjude.com/gulp-guide/)

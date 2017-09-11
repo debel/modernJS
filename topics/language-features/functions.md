@@ -245,3 +245,8 @@ Higher order functions are the bread and butter of functional programming
 
   const lisa = simpson('Lisa');
 ```
+
+## Links
+
+- [Factory functions patterns](https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1)
+- [the Y combinator function](https://dev.to/simov/anonymous-recursion-in-javascript)

@@ -4,8 +4,6 @@ page: 2
 ---
 # Objects
 
-In JavaScript an object is just a bag of properties.
-
 ## Creating Objects
 
 - `{} /* object literal */`
@@ -30,13 +28,13 @@ as a property of the `person` object.
 
 ### The new operator
 
-To create objects using `new` we need a `constructor` function
-which sets the properties of the new object.
+The `constructor` function sets the properties of the new object.
 
 The prototype of the new object is set
-to the constructor function's prototype property.
+to the value of the constructor function's prototype property.
 
 ```javascript
+  //constructor function
   function Rect(a,b) {
     this.a = a;
     this.b = b;
@@ -194,7 +192,7 @@ Disallow adding new properties to an object.
 
 ### Object.seal()
 
-Disallow removing properties.
+Disallow adding or removing properties.
 ```javascript
   const pointB = Object.seal({ x: 0, y: 0 });
   pointB.x = 15; // no problem
@@ -205,6 +203,9 @@ Disallow removing properties.
 ### Object.freeze()
 
 Make an object immutable.
+Disallow adding / removing properties,
+or changing their values.
+
 ```javascript
   const pointC = Object.freeze({ x: 0, y: 0 });
   pointC.x = 15; // throws or fails silently
