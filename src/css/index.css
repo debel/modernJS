@@ -14,3 +14,7 @@
 .reveal ul {
   list-style: none !important;
 }
+
+.reveal code {
+  max-height: 100% !important;
+}

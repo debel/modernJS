@@ -37,16 +37,29 @@ The browser is both powerful and restricted at the same time.
   document.write("<h1>Content</h1>");
 ```
 
+*Better*
 ```javascript
   document.body.innerHTML = "<h1>Content</h1>"
 ```
 
+*Even better*
 ```javascript
   var title = document.createElement("h1");
   title.textContent = "Content";
   document.body.appendChild(title);
+```
 
 ### Local Storage
+
+`localStorage` is a key-value database inside the browser
+
+```javascript
+  localStorage.getItem('username'); // null
+  localStorage.setItem('username', 'Gosho');
+
+  sessionStorage.getItem('username');
+  sessionStorage.setItem('username', 'Gosho');
+```
 
 ### User Media
 

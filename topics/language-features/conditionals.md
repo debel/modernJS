@@ -1,9 +1,12 @@
 ---
-  title: Conditionals
+title: Conditionals
+page: 1
 ---
 # Conditionals
 
 ## comparators
+
+_Style guide: use strict comparisons_
 
 ```javascript
   a == b;
@@ -17,22 +20,40 @@
 
   a < b;
   a <= b;
+
+  // there are no strict versions of > and <
 ```
 
 ## logical operators
 
 ```javascript
-  a && b;
-  a || b;
+  a && b; // logical AND; short circuit, returns value (not Boolean)
+  a || b; // logical OR; short circuit, returns value (not Boolean)
+
+  // use AND to guard against null / undefined
+  doSomething(myObject && myObject.myProperty);
+  myObject && myObject.doSomething && myObject.doSomething();
+
+  // use OR to set a default value
+  sumNumbers(numbers || []);
+  (myObject || defaultObject).doSomething();
 ```
 
+## False-y values
 
+- `false`
+- `undefined`
+- `null`
+- `0`
+- `NaN`
+-  `""` empty string
 
 ## if
 
 ```javascript
   if (condition) {
 
+  // the following "else" forms are equivalent
   } else {
     if (check) {
 
@@ -48,7 +69,6 @@
   const result = condition ? resultIfTrue : resultIfFalse;
 ```
 
-
 ## switch
 
 ```javascript
@@ -58,6 +78,7 @@
       break;
     case value2:
       doOtherStuff();
+      evenMoreStuff();
       break;
     default:
       doDefaultStuff();
@@ -68,8 +89,8 @@
 
 ```javascript
   match (expression) {
-    [a, b, ...c]: use(a, b, c)
-    { name, age }: use(name, age)
+    [a, b, ...c]: useArray(a, b, c)
+    { name, age }: useObject(name, age)
     else: { throw new Error(); }
   }
 ```

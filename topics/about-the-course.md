@@ -14,7 +14,7 @@
 
 - [slack channel](https://modern-js.slack.com/)
 - [trello](https://trello.com/modernjs)
-- [e-mail](mailto:mikov@aubg.edu)
+- [e-mail](mailto:mmikov@aubg.edu)
 - office hours: MB201 after 13h00 before classes.
 
 ## Materials
@@ -51,7 +51,7 @@
 
 ### Lab sessions
 
-- 3 sessions, each worth 15% of the final grade.
+- 2 sessions, each worth 20% of the final grade.
 - Full instructions for each session will be provided in class.
 - Lab sessions will be held on the _2nd_, and _4th_ day of classes.
 
@@ -67,7 +67,7 @@
 
 ### Test
 
-- The test will be worth 15% of the final grade.
+- The test will be worth 20% of the final grade.
 - It will cover all the material and consist of
 multiple choice - and short answer questions.
 - It will be held on the _5th_ day of classes.

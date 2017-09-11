@@ -1,5 +1,6 @@
 ---
-  title: Types
+title: Types
+page: 2
 ---
 # Types
 
@@ -59,38 +60,9 @@ from their respective prototypes.
   [1, 2, 3].length // 2
 ```
 
-### Question
-
-Is this code valid?
-What would the output be?
-
-```javascript
-  16["toString"](16)
-```
-
-## Parameters and Values
-
-Parameters are passed by value.
-The receiving function cannot change
-the bindings of the calling context.
-
-```javascript
-  function swap(x, y) {
-    var z = x;
-    x = y; y = z;
-  }
-
-  var x = 5; var y = 6;
-
-  swap(x, y);
-
-  x // 5
-  y // 6
-```
-
 ## References
 
-Primitive values are immutable and have a single instance for each value.
+Primitive values are immutable and only create a single instance per value.
 
 ```javascript
   var x = 5; var y = 5;
@@ -100,7 +72,7 @@ Primitive values are immutable and have a single instance for each value.
   s === z // true
 ```
 
-Each array / object is a separate instance
+### Each object is a separate instance
 
 ```javascript
   var x = new Number(2);

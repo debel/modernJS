@@ -1,5 +1,6 @@
 ---
-  title: Loops
+title: Loops
+page: 1
 ---
 # Loops
 
@@ -16,6 +17,26 @@
   for (let i = 0; i < 5; i += 1) {
     doStuff();
   }
+```
+
+## Variable binding
+
+`var` is bound once
+```javascript
+  for (var i = 0; i < 5; i += 1) {
+    setTimeout(() => console.log(i), 1000);
+  }
+
+  //logs: 5 5 5 5 5
+```
+
+`let` is rebound on each iteration of the loop
+```javascript
+  for (let i = 0; i < 5; i += 1) {
+    setTimeout(() => console.log(i), 1000);
+  }
+
+  //logs: 1 2 3 4 5
 ```
 
 ## Enumeration

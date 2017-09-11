@@ -2,10 +2,28 @@
   title: NodeJS
 ---
 
-# NodeJS APIs
+# NodeJS
 
-## fs
+## APIs
 
-## http
+### http
 
-## streams
+### fs
+
+### streams
+
+See [Streams](../../data-structures/streams/)
+
+## NPM
+
+### npm init
+
+### package.json
+
+### npm install
+
+## using APIs
+
+## using databases
+
+## using amqp / kafka

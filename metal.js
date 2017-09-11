@@ -5,7 +5,7 @@ const permalinks = require('metalsmith-permalinks');
 const layouts = require('metalsmith-layouts');
 const marked = require('marked');
 
-const markAndFilterIndex = collection => topic => {
+const markAndFilterIndex = (topic, index, collection) => {
   if (topic.path.endsWith('index.md')) {
     topic.layout = 'topic-index.html';
     topic.dontRender = true;
@@ -47,7 +47,8 @@ metalsmith(__dirname)
       .forEach(collectionName => {
         metal._metadata.collections[collectionName] =
           metal._metadata.collections[collectionName]
-            .filter(markAndFilterIndex(metal._metadata.collections[collectionName]))
+            .sort((a, b) => (a.page || 99) - (b.page || 99))
+            .filter(markAndFilterIndex)
             .map(markPageEnds(6));
     });
     done();

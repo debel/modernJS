@@ -1,11 +1,12 @@
 ---
-  title: JSON
+title: JSON
+page: 2
 ---
 
 # JSON
 
 JSON stands for JavaScript Object Notation and is a subset of the language.
-It is intended as a data exchange format.
+It is intended and used as a data exchange format.
 
 ## Syntax
 

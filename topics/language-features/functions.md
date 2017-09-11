@@ -1,5 +1,6 @@
 ---
-  title: Functions
+title: Functions
+page: 2
 ---
 # Functions
 
