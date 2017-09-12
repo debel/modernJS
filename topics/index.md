@@ -17,23 +17,22 @@ isHomePage: true
 ## Week 2
 
 - [Data structures](/data-structures/)
-- [Patterns and principles](/patterns-and-principles/)
-- [Lab Session 1](/about-the-course/#/7)
+- [Development tools](/development-tools/)
+- [Lab session 1](/about-the-course/#/7)
 
 ## Week 3
 
-- [Development tools](/development-tools/)
 - [Frameworks and libraries](/frameworks-and-libraries/)
+- [Patterns and principles](/patterns-and-principles/)
 
 ## Week 4
 
-- [Development tools](/development-tools/)
-- [Host environments](/host-environments/)
-- [Lab Session 2](/about-the-course/#/7)
+- [Data structures](/data-structures/)
+- [Frameworks and libraries](/frameworks-and-libraries/)
+- [Lab session 2](/about-the-course/#/7)
 
 ## Week 5
 
-- [Observables](/data-structures/observables/)
-- [Patterns and principles](/patterns-and-principles/)
-- [Homework Presentations](/about-the-course/#/8)
-- [Final Test](/about-the-course/#/9)
+- [Homework presentations](/about-the-course/#/8)
+- [Final test](/about-the-course/#/9)
+- [Lean coffee session](http://leancoffee.org/)

@@ -22,6 +22,8 @@ test/controllers
 documentation/
 ```
 
+### By technical type: Pros and Cons
+
 - Number of directories is constant
 - All directories grows with the addition of new modules
 - Top level view of frame-work, not intent
@@ -39,6 +41,7 @@ src/users
 src/orders
 src/payments
 ```
+### By business function: Pros and Cons
 
 - Each module includes its code, tests, documentation and configuration
 - Number of files per directory is constant

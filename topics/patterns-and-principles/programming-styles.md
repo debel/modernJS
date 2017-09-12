@@ -35,9 +35,14 @@ sumItemsCost([ { cost: 5 }, { cost: 4 }]); // 9
 class Items {
   constructor(...items) { this.items = items; }
 
-  sumCost() { return this.items.reduce(
-    (total, item) => total + item.cost,
-    0);
+  addToTotal(item) {
+    this.total += item.cost;
+  }
+
+  sumCost() {
+    this.total = 0;
+    this.items.forEach(item => this.addToTotal(item));
+    return this.total;
   }
 }
 
