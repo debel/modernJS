@@ -23,9 +23,13 @@ const markPageEnds = pageSize => (topic, index) => {
   return topic;
 };
 
+const newTabIfExternal = (href) =>
+  href.indexOf('http') >= 0   ?
+    'target="_blank"' : '';
+
 const renderer = new marked.Renderer();
 renderer.heading = (text, level) => `</section><section><h${level}>${text}</h${level}>`;
-renderer.link = (href, _, text) => `<a href="${href}">${text}</a>`;
+renderer.link = (href, _, text) => `<a href="${href}" ${newTabIfExternal(href)}>${text}</a>`;
 
 metalsmith(__dirname)
   .metadata({
@@ -35,12 +39,12 @@ metalsmith(__dirname)
   .destination('docs')
   .clean(true)
   .use(collections({
-    'languageFeatures': 'language-features/*.md',
-    'dataStructures': 'data-structures/*.md',
-    'hostEnvironments': 'host-environments/*.md',
-    'developmentTools': 'development-tools/*.md',
-    'frameworksAndLibraries': 'frameworks-and-libraries/*.md',
-    'patternsAndPrinciples': 'patterns-and-principles/*.md'
+    'Language Features': 'language-features/*.md',
+    'Data Structures': 'data-structures/*.md',
+    'Host Environments': 'host-environments/*.md',
+    'Development Tools': 'development-tools/*.md',
+    'Frameworks and Libraries': 'frameworks-and-libraries/*.md',
+    'Patterns and Principles': 'patterns-and-principles/*.md'
   }))
   .use((files, metal, done) => {
     Object.keys(metal._metadata.collections)

@@ -33,12 +33,14 @@ Expressions resolve to a value
 
 ```javascript
   5 // a literal number expression;
-  "use strict" // a literal string expression (pragma)
+  "use strict" // a string literal expression (pragma)
   {} // an object literal expression (SEE NEXT SLIDE)
 
-  a + b // addition expression
-
+  a + b // addition expression  
   a = 5 // assignment expression
+
+  //the comma expression returns the result of the last expression
+  console.log(message), message
 ```
 
 ## Statement position
@@ -50,10 +52,13 @@ or after a semi-colon `;`
 ```javascript
   5 // a number literal expression in statement position
 
-  { 1, 2, 3 } // code block containing 3 statements
-  { x: 1; y: 2 } // code block with labelled statements
+  // code block statements:
+  // - containing one comma expression at statement position
+  { 1, 2, 3 } // evaluates to 3
+   // - containing two labelled statements (label: expression)
+  { x: 1; y: 2 } // evaluates to 2
 
-  // trying to create an object literal expression
+  // BUT trying to create an object literal expression
   { x: 1, y: 2 } // this will throw an error!!
 
   // the variable declaration statement is hoisted
@@ -66,11 +71,14 @@ or after a semi-colon `;`
 
 ## Expression position
 
-You cannot use a statement if an expression is expected
+You cannot a statement when an expression is expected
+
 ```javascript
   //"if" is a statement
   //the following code will throw an error:
+  // - function arguments are a list of expressions
   console.log(if (condition) { 5 } else { 12 });
+  // - expression + expression
   var z = 42 + if (condition) { 12 };
 
   //the ternary operator is an expression form of "if"

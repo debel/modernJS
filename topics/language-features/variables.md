@@ -7,20 +7,18 @@ page: 1
 ## Declaration
 
 ```javascript
-  aGlobalVar = 'global';
+  aGlobalVar = 'a global variable';
 
-  var funcVar = 'function';
+  var funcVar = 'a function variable';
 
-  let blockVar = 'block';
+  let blockVar = 'a block variable';
 
-  const blockImmutable = 'block immutable';
+  const blockImmutable = 'an immutable block variable';
 ```
-
-## Scope
 
 See [Scopes](../scopes/)
 
-## Destructing
+## Destructuring
 
 ```javascript
   const [x, y] = [1, 2];
@@ -94,11 +92,17 @@ the bindings of the calling context.
     var z = x;
     x = y; y = z;
   }
+  var x = 5; var y = 10;
+  swap(x, y); // does nothing
+  console.log(x, y); // 5, 10
+```
 
-  var x = 5; var y = 6;
-
-  swap(x, y);
-
-  x // 5
-  y // 6
+```javascript
+  function swapInObject(obj) {
+    var z = obj.x;
+    obj.x = obj.y; obj.y = z;
+  }
+  var myObj = { x: 5, y: 10 };
+  swapInObject(myObj);
+  console.log(myObj); // { x: 10, y: 5 }
 ```

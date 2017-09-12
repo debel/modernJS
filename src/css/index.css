@@ -1,14 +1,16 @@
 #main-header {
-  font-size: 2em;
-  color: white;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 1.75em;
+  color: white;
 }
 
-#back-link, #back-link:hover {
-  float:right;
-  font-size: 1em;
+#main-header a, #main-header a:hover, #main-header a:visited {
   color: inherit;
-  text-decoration: none;
+}
+
+#back-link {
+  visibility: hidden;
+  float: right;
 }
 
 .reveal ul {

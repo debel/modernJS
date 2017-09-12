@@ -240,14 +240,16 @@ See [Prototypes](../prototypes/)
 ### Factory function
 
 ```javascript
-  function createTaxi(driver) {
+  function createTaxi(car, driver) {
     // use any object creation technique
-    const taxi = createCar();
-    taxi.driver = driver;
-    taxi.meter = new Meter();
+    const taxi = {
+      car,
+      driver,
+      meter: new Meter()
+    };
 
-    taxi.on('start', taxi.meter.start);
-    taxi.on('stop', taxi.meter.stop);
+    car.on('start', taxi.meter.start);
+    car.on('stop', taxi.meter.stop);
 
     return taxi;
   }

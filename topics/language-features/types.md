@@ -1,6 +1,6 @@
 ---
 title: Types
-page: 2
+page: 1
 ---
 # Types
 

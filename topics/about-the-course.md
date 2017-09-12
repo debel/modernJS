@@ -1,5 +1,6 @@
 ---
-  title: About the course
+title: About the course
+isHomePage: true
 ---
 
 # About the course

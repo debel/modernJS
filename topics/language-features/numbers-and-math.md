@@ -1,6 +1,8 @@
 ---
-  title: Math and numbers
+title: Numbers and Math
+page: 2
 ---
+
 # Numbers and Math
 
 ## The number type

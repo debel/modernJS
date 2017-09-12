@@ -31,6 +31,8 @@ The browser is both powerful and restricted at the same time.
   });
 ```
 
+### &nbsp;
+
 *Anti-Pattern*
 ```javascript
   /* !!! THIS IS BAD CODE!!! */
@@ -64,3 +66,7 @@ The browser is both powerful and restricted at the same time.
 ### User Media
 
 ### Service Workers
+
+## Links
+
+- [Browsers language support](https://kangax.github.io/compat-table/es6/)

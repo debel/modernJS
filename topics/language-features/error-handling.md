@@ -1,6 +1,6 @@
 ---
 title: Error handling
-page: 2
+page: 1
 ---
 
 # Error handling

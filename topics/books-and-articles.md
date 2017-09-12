@@ -1,5 +1,6 @@
 ---
-  title: Books and Articles
+title: Books and Articles
+isHomePage: true
 ---
 
 # Books
