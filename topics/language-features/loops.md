@@ -1,6 +1,7 @@
 ---
 title: Loops
 page: 1
+rank: 5
 ---
 # Loops
 

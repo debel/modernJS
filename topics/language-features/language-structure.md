@@ -1,6 +1,7 @@
 ---
 title: Structure and Grammar
 page: 1
+rank: 1
 ---
 # Language Structure
 

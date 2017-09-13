@@ -1,6 +1,7 @@
 ---
 title: Variables
 page: 1
+rank: 3
 ---
 # Variables
 

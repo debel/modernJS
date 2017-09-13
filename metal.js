@@ -51,7 +51,9 @@ metalsmith(__dirname)
       .forEach(collectionName => {
         metal._metadata.collections[collectionName] =
           metal._metadata.collections[collectionName]
-            .sort((a, b) => (a.page || 99) - (b.page || 99))
+            .sort((a, b) => (
+              (a.rank || 10) * (a.page || 99) - (b.rank || 10) * (b.page || 99)
+            ))
             .filter(markAndFilterIndex)
             .map(markPageEnds(7));
     });
