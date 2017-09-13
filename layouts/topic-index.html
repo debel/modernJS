@@ -1,37 +1,16 @@
-<html>
-
-<head>
-  <title>Modern JS : {{ title }}</title>
-</head>
-
-<body>
-  <header id="main-header">
-    <a href="/">INF310: Modern JS, Fall 2017</a>
-    > {{title}}
-    <a id="back-link" href="../">Back</a>
-  </header>
-  <div class="reveal">
-    <div class="slides">
-      <section>
-        <h2>{{title}}</h2>
-        <ul>
-          {{#each collectionArray}}
-              {{#if this.nextPage}}
-                </ul></section><section><ul>
-              {{/if}}
-              {{#unless this.dontRender}}
-                <li><a href="../{{this.path}}">{{this.title}}</a></li>
-              {{/unless}}
-          {{/each}}
-          {{{contents}}}
-        </ul>
-    </section>
-    </div>
-  </div>
-  <script src="/build/index.js"></script>
-  <script>
-    window.modernJS.init("{{title}}");
-  </script>
-</body>
-
-</html>
+{{> header }}
+<section>
+  <h2>{{title}}</h2>
+  <ul>
+    {{#each collectionArray}}
+        {{#if this.nextPage}}
+          </ul></section><section><ul>
+        {{/if}}
+        {{#unless this.isCollectionIndex}}
+          <li><a href="../{{this.path}}">{{this.title}}</a></li>
+        {{/unless}}
+    {{/each}}
+    {{{contents}}}
+  </ul>
+</section>
+{{> footer }}

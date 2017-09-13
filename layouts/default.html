@@ -1,27 +1,3 @@
-<html>
-
-<head>
-  <title>Modern JS : {{ title }}</title>
-</head>
-
-<body>
-  <header id="main-header">
-    <a href="/">INF310: Modern JS, Fall 2017</a>
-    {{#unless isHomePage}}
-      > <a href="../">{{collection}}</a>
-      > {{title}}
-      <a id="back-link" href="../">Back</a>
-    {{/unless}}
-  </header>
-  <div class="reveal">
-    <div class="slides">
-        {{{contents}}}
-    </div>
-  </div>
-  <script src="/build/index.js"></script>
-  <script>
-    window.modernJS.init("{{title}}");
-  </script>
-</body>
-
-</html>
+{{> header }}
+{{{contents}}}
+{{> footer }}

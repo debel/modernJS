@@ -8,7 +8,7 @@ const marked = require('marked');
 const markAndFilterIndex = (topic, index, collection) => {
   if (topic.path.endsWith('index.md')) {
     topic.layout = 'topic-index.html';
-    topic.dontRender = true;
+    topic.isCollectionIndex = true;
     topic.collectionArray = collection;
     return false;
   }
@@ -59,5 +59,5 @@ metalsmith(__dirname)
   })
   .use(markdown({ renderer }))
   .use(permalinks())
-  .use(layouts({ engine: 'handlebars', default: 'default.html' }))
+  .use(layouts({ engine: 'handlebars', default: 'default.html', partials: 'layouts/partials' }))
   .build(error => error ? console.error(error) : console.log('Markdown -> HTML OK'));

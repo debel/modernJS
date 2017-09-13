@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <title>Modern JS : {{ title }}</title>
+</head>
+
+<body>
+  <header id="main-header">
+    {{#if isHomePage}}
+      INF310: Modern JS, Fall 2017
+    {{else}}
+      <a href="/">INF310: Modern JS, Fall 2017</a>
+      {{#if collection}}
+        {{#unless isCollectionIndex}}
+          > <a href="../">{{collection}}</a>
+        {{/unless}}
+      {{/if}}
+      > {{title}}
+      <a id="back-link" href="../">Back</a>
+    {{/if}}
+  </header>
+  <div class="reveal">
+    <div class="slides">

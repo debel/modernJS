@@ -10,9 +10,10 @@ require('highlight.js/styles/atom-one-dark.css');
 require('../css/index.css');
 
 const initNav = require('./nav');
+const initSearch = require('./search');
 
 global.modernJS = {
-  init(title) {
+  init(title, topics) {
 
     reveal.initialize({
       width: 1024,
@@ -28,12 +29,8 @@ global.modernJS = {
 
     initNav(title, reveal);
 
-    hljs.initHighlightingOnLoad();
+    initSearch(title, topics);
 
-    if (document.referrer) {
-      const back = document.getElementById('back-link');
-      back.href = document.referrer;
-      back.style.visibility = 'visibile';
-    }
+    hljs.initHighlightingOnLoad();
   }
 };

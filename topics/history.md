@@ -1,6 +1,5 @@
 ---
 title: A short history of JavaScript
-isHomePage: true
 ---
 
 # A short history of JavaScript
