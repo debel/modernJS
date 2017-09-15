@@ -1,6 +1,4 @@
 {{> header }}
-<section>
-  <h2>{{title}}</h2>
   <ul>
     {{#each collectionArray}}
         {{#if this.nextPage}}
@@ -10,7 +8,7 @@
           <li><a href="../{{this.path}}">{{this.title}}</a></li>
         {{/unless}}
     {{/each}}
-    {{{contents}}}
   </ul>
 </section>
+{{{contents}}}
 {{> footer }}

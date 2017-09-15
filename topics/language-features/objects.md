@@ -1,7 +1,9 @@
 ---
 title: Objects
 page: 2
+rank: 3
 ---
+
 # Objects
 
 ## Creating Objects

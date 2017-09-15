@@ -40,7 +40,8 @@ Expressions resolve to a value
   a + b // addition expression  
   a = 5 // assignment expression
 
-  //the comma expression returns the result of the last expression
+  // the comma expression evaluates to
+  // the result of the second expression
   console.log(message), message
 ```
 
@@ -72,7 +73,7 @@ or after a semi-colon `;`
 
 ## Expression position
 
-You cannot a statement when an expression is expected
+You cannot use a statement when an expression is expected
 
 ```javascript
   //"if" is a statement
@@ -87,6 +88,20 @@ You cannot a statement when an expression is expected
   var z = 42 + condition ? 12 : 0;
 ```
 
+## Reading JavaScript
+
+```
+console.log(message), message
+```
+
+- a comma expression `c1, c2` with:
+  - `c1`: a function invocation expression `f(x)` with:
+    - `f`: a property access expression `o.p` with:
+      - `o`: the value of the `console` binding
+      - `p`: the `"log"` string literal
+    - `x`: the value of the `message` binding
+  - `c2`: the value of the `message` binding
+
 ## Built-in objects
 
 - [Boolean](../conditionals/)
@@ -99,11 +114,13 @@ You cannot a statement when an expression is expected
 
 ## Host environments
 
-Host environments also inject global objects.
+Host environments can expand and modify
+how the language behaves. They also inject global objects
 e.g. `require` in node.js and `window` in the browser
 
 [Host environments](../../host-environments/)
 
 ## Links
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+- [ESPrima Parser Demo](http://esprima.org/demo/parse.html)
+- [MDN JavaScript reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)

@@ -12,11 +12,4 @@ module.exports = function initializeNav(title, Reveal) {
   Reveal.addEventListener('slidechanged', (event) => {
     localStorage.setItem(lsKey, event.indexh);
   });
-
-
-  if (document.referrer) {
-    const back = document.getElementById('back-link');
-    back.href = document.referrer;
-    back.style.visibility = 'visibile';
-  }
 };

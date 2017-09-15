@@ -1,20 +1,30 @@
 ---
-title: Variables
+title: Variables and bindings
 page: 1
-rank: 3
+rank: 2
 ---
 # Variables
 
 ## Declaration
 
 ```javascript
-  aGlobalVar = 'a global variable';
+  aGlobalVar = 'an implicit global scope variable';
 
-  var funcVar = 'a function variable';
+  var funcVar = 'a function scope variable';
 
-  let blockVar = 'a block variable';
+  let blockVar = 'a block scope variable';
+```
 
-  const blockImmutable = 'an immutable block variable';
+## Bindings
+
+```javascript
+const blockImmutable = 'an immutable block scope binding';
+
+// an immutable module scope binding
+import thing from 'lib';
+
+// global object bindings:
+global, window
 ```
 
 See [Scopes](../scopes/)
@@ -64,7 +74,7 @@ before where they are declared in the code.
   let a = 5;
 ```
 
-## Bindings and references
+## Variables and references
 
 Variables cannot reference other variables, only values.
 

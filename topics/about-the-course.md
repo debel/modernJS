@@ -8,14 +8,14 @@ title: About the course
 
 - Mihail Mikov
 - graduated AUBG 2009
-- senior fullstack engineer at Skyscanner
+- fullstack engineer at Skyscanner
 
 ## Communication
 
 - [slack channel](https://modern-js.slack.com/)
 - [trello](https://trello.com/modernjs)
 - [e-mail](mailto:mmikov@aubg.edu)
-- office hours: MB201 after 13h00 before classes.
+- office hours
 
 ## Materials
 

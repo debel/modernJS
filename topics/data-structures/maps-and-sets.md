@@ -2,7 +2,7 @@
   title: Maps and sets
 ---
 
-# Sets
+## Sets
 
 ```javascript
  const uniqueNumbers = new Set();
@@ -18,7 +18,7 @@
 ```
 
 
-# Maps
+## Maps
 
 ```javascript
 
@@ -33,13 +33,13 @@
 
 ```
 
-# Weak Sets / Weak Maps
+## Weak Sets / Weak Maps
 
 These data structures are intended to prevent memory leaks. They do not hold references to the data they contain. Garbage collection can destroy data inside them.
 
 As such, they are not iterable (they don't have a `forEach` method) and no `size` method.
 
-# Weak Sets / Weak Maps
+## Weak Sets / Weak Maps
 
 ```javascript
   const reclamables = new WeakSet();

@@ -28,8 +28,9 @@ _Style guide: use strict comparisons_
 ## logical operators
 
 ```javascript
-  a && b; // logical AND; short circuit, returns value (not Boolean)
-  a || b; // logical OR; short circuit, returns value (not Boolean)
+  // logical operators return values (not Booleans)
+  a && b; // logical AND; short circuit
+  a || b; // logical OR; short circuit
 
   // use AND to guard against null / undefined
   doSomething(myObject && myObject.myProperty);

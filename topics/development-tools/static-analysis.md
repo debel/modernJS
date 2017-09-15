@@ -9,7 +9,7 @@
 
 ## ESLint
 
-# Type systems
+## Type systems
 
 ## Flow
 

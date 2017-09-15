@@ -2,7 +2,7 @@
 title: Books and Articles
 ---
 
-# Books
+## Books
 
 - [You Don't know JS](https://github.com/getify/You-Dont-Know-JS)
 - [Expolring ES6 & ES7](http://exploringjs.com/)
@@ -11,7 +11,7 @@ title: Books and Articles
 - [Practical modern JavaScript](https://ponyfoo.com/books/practical-modern-javascript/chapters#toc)
 - [The JS way](https://github.com/bpesquet/thejsway/#)
 
-# Article series
+## Article series
 
 - [Mozilla ES6 in-depth](https://hacks.mozilla.org/category/es6-in-depth/)
 - [Modern JS tutorial](https://javascript.info/)
@@ -19,7 +19,7 @@ title: Books and Articles
 - [2ality blog series](http://2ality.com/)
 - [Ponyfoo](https://ponyfoo.com/)
 
-# Specifications
+## Specifications
 
 - [JavaScript language specification](https://tc39.github.io/ecma262/)
 - [Script element specification](https://html.spec.whatwg.org/multipage/scripting.html#the-script-element)

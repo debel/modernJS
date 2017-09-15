@@ -13,6 +13,9 @@ const markAndFilterIndex = (topic, index, collection) => {
     return false;
   }
 
+  topic.nextTopic = collection[index + 1];
+  topic.previousTopic = collection[index - 1];
+
   return true;
 }
 
@@ -24,11 +27,13 @@ const markPageEnds = pageSize => (topic, index) => {
 };
 
 const newTabIfExternal = (href) =>
-  href.indexOf('http') >= 0   ?
-    'target="_blank"' : '';
+  href.indexOf('http') >= 0   ? 'target="_blank"' : '';
 
 const renderer = new marked.Renderer();
-renderer.heading = (text, level) => `</section><section><h${level}>${text}</h${level}>`;
+renderer.heading = (text, level) => (
+  // level === 1 ? '' : `</section><section><h${level}>${text}</h${level}>`
+  level === 1 ? '' : `</section><section><h5 class="inline-h">${text}</h5>`
+);
 renderer.link = (href, _, text) => `<a href="${href}" ${newTabIfExternal(href)}>${text}</a>`;
 
 metalsmith(__dirname)
@@ -36,7 +41,6 @@ metalsmith(__dirname)
     siterul: 'https://modern-js.github.io'
   })
   .source('./topics')
-  .destination('docs')
   .clean(true)
   .use(collections({
     'Language Features': 'language-features/*.md',
@@ -52,7 +56,7 @@ metalsmith(__dirname)
         metal._metadata.collections[collectionName] =
           metal._metadata.collections[collectionName]
             .sort((a, b) => (
-              (a.rank || 10) * (a.page || 99) - (b.rank || 10) * (b.page || 99)
+              (((a.page || 10) * 100) + (a.rank || 10))  - (((b.page || 10) * 100) + (b.rank || 10))
             ))
             .filter(markAndFilterIndex)
             .map(markPageEnds(7));
@@ -62,4 +66,5 @@ metalsmith(__dirname)
   .use(markdown({ renderer }))
   .use(permalinks())
   .use(layouts({ engine: 'handlebars', default: 'default.html', partials: 'layouts/partials' }))
+  .destination('docs')
   .build(error => error ? console.error(error) : console.log('Markdown -> HTML OK'));

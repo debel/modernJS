@@ -4,9 +4,8 @@ page: 1
 ---
 # Types
 
-Variables don't have types.
-
-Values have types.
+- Variables don't have types.
+- Values have types.
 
 ## Primitive types
 
@@ -19,13 +18,13 @@ Values have types.
 
 ## Complex types
 
-All complex types are objects.
-
 - object
   - function
     - class
   - array
   - regex
+- _(all complex types are objects)_
+
 
 ## The `typeof` operator
 

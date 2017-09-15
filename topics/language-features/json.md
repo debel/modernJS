@@ -12,12 +12,18 @@ It is intended and used as a data exchange format.
 
 See [JSON specification](http://www.json.org/)
 
-## JSON methods
+## JSON parse
 
 ```javascript
-  const object = JSON.parse('{ "id": 0, "message": "hello", "someArray": [1, 2, 3]  }');
-  console.log(object.message, object.number, object.someArray);
+const jsonString = '{ "id": 0, "message": "hello", "someArray": [1, 2, 3]  }';
+const object = JSON.parse(jsonString);
+console.log(object.message, object.number, object.someArray);
+
+JSON.parse(100); // returns 100
+JSON.parse("test"); // throws an error
 ```
+
+## JSON stringify
 
 ```javascript
   const object = {
@@ -27,10 +33,9 @@ See [JSON specification](http://www.json.org/)
   };
 
   const jsonString = JSON.stringify(object);
+  const messageOnly = JSOn.stringify(object, ['message']);
 ```
 
-See [https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON]
+## Links
 
-## Mime Type
-
-`application/json`
+[MDN JSON reference](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON)

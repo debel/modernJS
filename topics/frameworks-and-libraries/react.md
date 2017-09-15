@@ -12,12 +12,12 @@
 
 ### Redux
 
-# Other libraries
+## Other libraries
 
-## Vue
+### Vue
 
-## Angular
+### Angular
 
-## Links
+### Links
 
 - [AirBnB frontend article](https://medium.com/airbnb-engineering/rearchitecting-airbnbs-frontend-5e213efc24d2)

@@ -1,4 +1,33 @@
-</div>
+</section>
+{{#if this.nextTopic}}
+<section><ul>
+{{/if}}
+{{#if this.previousTopic}}
+  {{#unless this.nextTopic}}
+<section><ul>
+  {{/unless}}
+{{/if}}
+{{#if this.nextTopic}}
+  <li><h5 class="inline-h">Next Topic:</h5><a href="/{{this.nextTopic.path}}">
+{{this.nextTopic.title}}
+  </a></li>
+{{/if}}
+{{#if this.previousTopic}}
+  <li><h5 class="inline-h">Previous Topic:</h5><a href="/{{this.previousTopic.path}}">
+{{this.previousTopic.title}}
+  </a></li>
+{{/if}}
+{{#if this.nextTopic}}
+      </ul>
+    </section>
+{{/if}}
+{{#if this.previousTopic}}
+  {{#unless this.nextTopic}}
+      </ul>
+    </section>
+  {{/unless}}
+{{/if}}
+  </div>
 </div>
 <script src="/build/index.js"></script>
 <script>

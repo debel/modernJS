@@ -8,8 +8,7 @@
   color: inherit;
 }
 
-#back-link {
-  visibility: hidden;
+#main-header .nav-link {
   float: right;
 }
 
@@ -20,3 +19,8 @@
 .reveal code {
   max-height: 100% !important;
 }
+
+ .inline-h {
+   display: inline;
+   vertical-align: top !important;
+ }

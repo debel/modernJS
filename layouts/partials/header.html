@@ -16,8 +16,15 @@
         {{/unless}}
       {{/if}}
       > {{title}}
-      <a id="back-link" href="../">Back</a>
     {{/if}}
   </header>
   <div class="reveal">
     <div class="slides">
+      <section>
+        <h5 class="inline-h">
+          {{#if isHomePage}}
+            INF310: Modern JS
+          {{else}}
+            {{title}}
+          {{/if}}
+        </h5>

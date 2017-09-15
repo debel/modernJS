@@ -18,7 +18,7 @@
   node --inspect --debug-brk index.js
 ```
 
-# Source Maps
+## Source Maps
 
 ## Usage
 

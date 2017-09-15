@@ -1,6 +1,7 @@
 ---
 title: Error handling
 page: 1
+rank: 6
 ---
 
 # Error handling
