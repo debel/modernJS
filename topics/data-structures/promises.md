@@ -18,7 +18,7 @@ Or handle the error if something goes wrong
 
 ### Chaining
 
-Each `then function` returns a new promise
+Each call of the `then` method returns a new promise
 ```javascript
   getUserProfile()
     .then(profile => download(profile.image))

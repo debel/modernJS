@@ -47,19 +47,34 @@ The result of any operation involving `NaN` will be `NaN`
 
   NaN === NaN // false
   NaN !== NaN // true
+
+  isNaN(NaN) // true
+  isNaN("abc") // true
+
+  Number.isNaN(NaN) // true
+  Number.isNaN("abc") // false
 ```
+Use `Number.isNaN` instead of `isNaN`
 
 ## Number Functions
 
 ### ParseInt
 
+Prefer `Number.parseInt` to the global `parseInt` function
+
 ```javascript
   Number.parseInt("100", 2) // 4
   Number.parseInt("100", 10) // 100
-  Number.parseInt("100", 16) // 100
+  Number.parseInt("100", 16) // 256
 
   Number.parseInt("100abc101", 10) // 100
   Number.parseInt("abc", 10) // NaN
+```
+
+### ParseFloat
+
+```javascript
+  Numuber.parseFloat('3.14') // 3.14
 ```
 
 ### Safely comparing fractions

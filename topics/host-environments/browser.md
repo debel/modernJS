@@ -26,12 +26,12 @@ The browser is both powerful and restricted at the same time.
 ```
 
 ```javascript
-  element.addEventListener('eventName', function () {
+  element.addEventListener('eventName', function (event) {
     // handle each event e.g. click
   });
 ```
 
-### &nbsp;
+### Rendering DOM elements
 
 *Anti-Pattern*
 ```javascript
@@ -63,9 +63,46 @@ The browser is both powerful and restricted at the same time.
   sessionStorage.setItem('username', 'Gosho');
 ```
 
+### Geo Location
+
+```javascript
+  navigator.geolocation.getCurrentPosition(
+    position => console.log(position),
+    error => console.error(error),
+    {
+      enableHighAccuracy: true
+    }
+  );
+```
+
+### Fetch
+
+```javascript
+  fetch('http://my.server/data.json')
+    .then(response => (response.ok ?
+      response.json() : Promise.reject('bad response')))
+    .then(data => handleData(data));
+```
+
+### Web Audio API
+
+```javascript
+  const context = new AudioContext();
+  const oscillator = context.createOscillator();
+
+  oscillator.connect(context.destination);
+  oscillator.start(0);
+
+  oscillator.frequency.value = 8800;
+```
+
+### Canvas / WebGL
+
+- [WebGL Juggler](http://www.jugglesaver.co.uk/juggle/webgl.html)
+
 ### User Media
 
-### Service Workers
+### Service Worker
 
 ## Links
 
