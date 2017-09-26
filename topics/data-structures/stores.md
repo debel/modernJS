@@ -5,3 +5,5 @@
 # Stores
 
 In the Flux architecture stores are ...
+
+## Redux

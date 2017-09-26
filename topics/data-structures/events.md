@@ -122,5 +122,5 @@ It allows us to decouple the producers and consumers (publishers and subscribers
   topics.on('my-message', handleMyMessage);
   topics.on('another-message', handleMyMessage);
 
-  topics.emit()
+  topics.emit('new-item', { name: "Laptop", price: 873.50 });
 ```

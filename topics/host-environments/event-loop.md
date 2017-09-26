@@ -4,6 +4,10 @@
 
 # Event loop
 
+![Event loop](/images/javascript_event_loop.png)
+
+## Event loop
+
 ![Event loop](/images/event-loop.jpg)
 
 ## Timers
@@ -95,9 +99,12 @@ other events in between.
 ```javascript
   const longAsyncTask = () => {
     const workChuncks = [];
-    while (workChuncks.length > 0) {
-      const nextTask = workChuncks.splice(0, 1)[0];
-      setTimeout(nextTask, deleyInMs);
+    while (workChunks.length > 0) {
+      // get the last chunk
+      const nextTask = workChunks.pop();
+
+      // reverse using timeouts
+      setTimeout(nextTask, workChunks.length * deleyInMs);
     }
   }
 ```
