@@ -15,35 +15,39 @@ grants that code full access to the global scope
   </script>
 ```
 
-## AMD
+## Asynchronous Module Definition (AMD)
 
-Asynchronous Module Definition (requireJS)
+- popular library: [requireJS](http://requirejs.org/)
+- loads code through `script tags` or `require`
+- Requires a name to path / url configuration
+- module code is "isolated" within its function scope
 
 ```javascript
-define('moduleName', function (dependencies) {
-    return myPublicInterface;
+require([modules], function (modules) {
+  doStuffWith(modules);
 });
 
-require([modules], function (modules) {
-  use(modules);
+define('moduleName', [dependencies], function (dependencies) {
+    return myPublicInterface;
 });
 ```
 
 ## CommonJS
 
-Synchronous, node.js's native module system
+- Node.js's native module system
+- Synchronous and local code loading
 
 ```javascript
   const myModule = require('moduleName');
 
-  module.exports = function (options) {}
+  module.exports = anyTypeOfValue;
 ```
 
 ## ES6 Modules
 
-- Modules are automatically in "strict mode"
-- Provides only static module definition declarations
+- Static module declarations only
 - Module loading is delegated to the host environment
+- Modules are automatically in "strict mode"
 
 ```javascript
   import createServer from 'http';
@@ -55,8 +59,11 @@ Synchronous, node.js's native module system
 
 - UMD stands for Universal Module Definition
 - Wraps your module so that it is acceptable to any type of module system
+  - Wrapper introduces size and runtime overhead
+  - Useful when publishing a library
 - [See Build tools](../../development-tools/task-runners/)
 
-## Loaders
+## Links
 
-- [See Code loadering](../../host-environments/code-loading/)
+- See [Code loading](../../host-environments/code-loading/)
+- [Article about modules and code loading](https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/)
