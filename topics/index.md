@@ -17,11 +17,11 @@ isHomePage: true
 
 - [Host environments](/host-environments/)
 - [Development tools](/development-tools/)
-- [Data structures](/data-structures/)
 - [Lab session 1](/about-the-course/#/7)
 
 ## Week 3 (06.10.2017)
 
+- [Data structures](/data-structures/)
 - [Development tools](/development-tools/)
 - [Frameworks and libraries](/frameworks-and-libraries/)
 - [Patterns and principles](/patterns-and-principles/)
