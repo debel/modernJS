@@ -1,0 +1,133 @@
+:root {
+    --course-menu-arrow-size: 10px;
+    --course-menu-arrow-position-y: -10px;
+    --course-menu-background-color: rgba(100, 100, 100, .7);
+}
+
+h1 {
+  font-size: 5rem !important;
+}
+
+h2 {
+  font-size: 4rem !important;
+}
+
+h3 {
+  font-size: 3rem !important;
+}
+
+h4 {
+  font-size: 2rem !important;
+}
+
+a {
+  color: white !important;
+  font-weight: bold;
+}
+
+p {
+  color: white !important;
+}
+
+ul {
+  list-style-type: square;
+}
+
+.prism-code {
+  font-size: 1.75em !important;
+  color: #ff5555 !important;
+}
+
+code {
+  color: white !important;
+}
+
+@media print {
+  .menu {
+    display: none;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    color: black !important;
+  }
+}
+
+@media screen {
+  h2,h3,h4,h5,h6 {
+    color: white !important;
+  }
+
+  .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+  }
+
+  .menu_button{
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  .menu_button>img, .menu_button>.menu_title {
+    vertical-align: middle;
+  }
+
+  .menu_list {
+      background: var(--course-menu-background-color);
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,.5);
+      position: relative;
+      top: 5px;
+      font-size: .6em;
+      padding: 15px 0;
+      margin-left: 30px;
+      max-height: 50vh;
+      overflow-y: auto;
+  }
+
+  .menu_list:before {
+      position: absolute;
+      top: var(--course-menu-arrow-position-y);
+      left: 50%;
+      content: '';
+      display: block;
+      border-top: 0;
+      border-left: var(--course-menu-arrow-size) solid transparent;
+      border-right:  var(--course-menu-arrow-size) solid transparent;
+      border-bottom: var(--course-menu-arrow-size) solid var(--course-menu-background-color);
+  }
+
+  .menu_list li {
+      padding: 0;
+  }
+
+  .menu_list li a {
+   font-style: normal;
+   padding: 15px 30px;
+   display: block;
+   color: white;
+  }
+
+  .menu li a:hover {
+      background: rgba(0,0,0,.3);
+  }
+
+  .menu_list a.menu_active_item {
+      color: gray !important;
+      text-decoration: none;
+      font-weight: bold;
+  }
+
+  .menu_list::-webkit-scrollbar-track
+  {
+  	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  	border-radius: 10px;
+  	background-color: #F5F5F5;
+  }
+
+  .menu_divider {
+    list-style: none;
+    text-align: center;
+  }
+}
