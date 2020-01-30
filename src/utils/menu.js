@@ -8,8 +8,11 @@ const locationMatches = link =>
     return location.pathname === `${link}`;
   };
 
-const MenuButton = ({ toggle }) => (
+const MenuContext = React.createContext(() => () => {});
+
+const MenuButton = React.forwardRef(({ toggle }, ref) => (
   <span
+    ref={ref}
     role="img"
     aria-label="menu"
     className="menu_button"
@@ -17,49 +20,84 @@ const MenuButton = ({ toggle }) => (
       <img alt="js logo" width="50px" src="/images/js-icon.png" />
       <span className="menu_title">{courseTitle}</span>
   </span>
-);
+));
+
+const MenuItem = ({ link, text }) => {
+  const hideMenu = React.useContext(MenuContext);
+
+  return (
+    <li key={link}>
+      <NavLink
+        to={link}
+        isActive={locationMatches(link)}
+        onClick={hideMenu}
+        activeClassName="menu_active_item">
+          {text}
+      </NavLink>
+    </li>
+  );
+};
+
+const MenuSection = ({ title, items, isOpen, toggle }) => {
+  return (
+    <React.Fragment>
+      <li key={title} className={`menu_divider ${isOpen && 'menu_divider_selected'}`} onClick={toggle}>{title}</li>
+      <div className="menu_section">
+        {isOpen && items.map(item => <MenuItem {...item} />)}
+      </div>
+    </React.Fragment>
+  );
+};
 
 const Menu = () => {
-  debugger;
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const toggleMenu = React.useCallback(() => setMenuOpen(!menuOpen), [menuOpen]);
+  const [openedSection, setOpenedSection] = React.useState(topics.length - 1);
+  const toggleMenu = React.useCallback(() => setMenuOpen(o => !o), []);
   const hideMenu = React.useCallback(() => setMenuOpen(false), []);
   const menuRef = React.useRef();
   const menuListRef = React.useRef();
+  const menuButtonRef = React.useRef();
+
   React.useEffect(() => {
     if (menuOpen) {
       menuListRef.current.scrollTop = menuListRef.current.scrollHeight;
     }
   }, [menuOpen]);
+
   React.useEffect(() => {
     const hideMenuOnOutsideClick = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      const menuButtonClicked = menuButtonRef && menuButtonRef.current && menuButtonRef.current.contains(event.target);
+      const clickInsideMenuList = menuListRef.current && menuListRef.current.contains(event.target);
+      if (!menuButtonClicked && !clickInsideMenuList) {
         setMenuOpen(false);
       }
     };
+
     document.body.addEventListener('click', hideMenuOnOutsideClick);
     return () => { document.body.removeEventListener('click', hideMenuOnOutsideClick); }
   }, []);
+
+  const toggleSection = (sectionIndex) => (
+    () => setOpenedSection(oldOpenSection => (
+      oldOpenSection !== sectionIndex
+        ? sectionIndex
+        : -1
+      )
+    )
+  );
+
   return (
-    <aside className="menu" ref={menuRef}>
-      <MenuButton toggle={toggleMenu} />
-      { menuOpen &&
-      <ul className="menu_list" ref={menuListRef}>
-      {topics.map(({ link, text, divider }) => (
-        divider
-        ? <li key={text} className="menu_divider">{text}</li>
-        : <li key={link}>
-          <NavLink
-            to={link}
-            isActive={locationMatches(link)}
-            onClick={hideMenu}
-            activeClassName="menu_active_item">
-              {text}
-          </NavLink>
-        </li>
-      ))}
-      </ul>}
-    </aside>);
+    <MenuContext.Provider value={hideMenu}>
+      <aside className="menu" ref={menuRef}>
+        <MenuButton toggle={toggleMenu} ref={menuButtonRef} />
+        { menuOpen &&
+        <ul className="menu_list" ref={menuListRef}>
+          {topics.map((section, index) => (
+            <MenuSection {...section} isOpen={index === openedSection} toggle={toggleSection(index)} />
+          ))}
+        </ul>}
+      </aside>
+    </MenuContext.Provider>);
 }
 
 export default Menu;

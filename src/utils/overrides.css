@@ -1,23 +1,59 @@
 :root {
     --course-menu-arrow-size: 10px;
     --course-menu-arrow-position-y: -10px;
-    --course-menu-background-color: rgba(100, 100, 100, .7);
+    --course-menu-background-color: rgba(100, 100, 100, 0.97);
 }
 
-h1 {
-  font-size: 5rem !important;
+@media (max-width: 767px) {
+  .print_button {
+    display: none;
+  }
+
+  p, ul, li, code{
+    font-size: 1rem !important;
+  }
+
+  body {
+    font-size: 1rem !important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  h4 {
+    font-size: 1rem !important;
+  }  
 }
 
-h2 {
-  font-size: 4rem !important;
-}
+@media (min-width: 768px) {
+  .prism-code {
+    font-size: 1.75em !important;
+  }
 
-h3 {
-  font-size: 3rem !important;
-}
-
-h4 {
-  font-size: 2rem !important;
+  h1 {
+    font-size: 5rem !important;
+  }
+  
+  h2 {
+    font-size: 4rem !important;
+  }
+  
+  h3 {
+    font-size: 3rem !important;
+  }
+  
+  h4 {
+    font-size: 2rem !important;
+  }  
 }
 
 a {
@@ -34,7 +70,6 @@ ul {
 }
 
 .prism-code {
-  font-size: 1.75em !important;
   color: #ff5555 !important;
 }
 
@@ -43,13 +78,39 @@ code {
 }
 
 @media print {
-  .menu {
+  .menu, .print_button {
     display: none;
   }
 
-  h1,h2,h3,h4,h5,h6 {
+  * {
     color: black !important;
+    font-size: 2rem !important;
   }
+
+  pre, pre *, code, code *{
+    font-size: 1rem !important;
+    font-weight: normal;
+  }
+}
+
+.print_button {
+  font-size: 0.7em;
+  float: right;
+  z-index: 15000 !important;
+  position: relative;
+  cursor: pointer;
+}
+
+.printing .menu{
+  display: none;
+}
+
+.printing * {
+  color: black !important;
+}
+
+.printing .prism-code {
+  background-color: white !important;
 }
 
 @media screen {
@@ -58,10 +119,12 @@ code {
   }
 
   .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 15000;
+    width: 75%;
+    
   }
 
   .menu_button{
@@ -82,14 +145,15 @@ code {
       font-size: .6em;
       padding: 15px 0;
       margin-left: 30px;
-      max-height: 50vh;
+      max-height: 75vh;
+      list-style: none;
       overflow-y: auto;
   }
 
   .menu_list:before {
       position: absolute;
       top: var(--course-menu-arrow-position-y);
-      left: 50%;
+      left: 15%;
       content: '';
       display: block;
       border-top: 0;
@@ -126,8 +190,23 @@ code {
   	background-color: #F5F5F5;
   }
 
-  .menu_divider {
+  .menu_divider{
+    font-size: 1.2em;
     list-style: none;
-    text-align: center;
+    padding: 15px 30px !important;
+    font-style: italic;
+    cursor: pointer;
+  }
+
+  .menu_divider:hover {
+    background: rgba(0,0,0,.3);
+  }
+
+  .menu_divider_selected {
+    font-weight: bold;
+  }
+
+  .menu_section {
+    padding-left: 2%;
   }
 }

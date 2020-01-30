@@ -2,14 +2,21 @@ import React from 'react';
 
 import Deck from './styled-markdown-deck';
 
-export default ({ match }) => {
+export default ({ match, location }) => {
   const section = (match && match.params.section) || null;
   const topic = (match && match.params.topic) || 'about-the-course';
   const fullPathToLecture = section
     ? `${section}/${topic}`
     : topic;
-  debugger;
   const [content, setContent] = React.useState();
+
+  React.useEffect(() => {
+    if (location.hash.includes('print')) {
+      const rootDomElement = document.getElementById('root');
+      rootDomElement.classList.add('printing');
+    }
+  }, [location.hash]);
+
   React.useEffect(() => {
     topic && import(`../../topics/${fullPathToLecture}.md`)
       .catch(error => import('../error.md'))

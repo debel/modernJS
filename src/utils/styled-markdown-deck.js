@@ -11,7 +11,7 @@ const theme = createTheme(
   {
     primary: '#1F2022',
     secondary: '#CECECE',
-    tertiary: '#03A9FC',
+    tertiary: '#68A063',
     quartenary: 'white',
   },
   {
@@ -27,10 +27,12 @@ const deckOptions = {
   transitionDuration: 200,
 };
 
-const StyledDeck = ({ slides, startingAt = 1 }) => (
-  <Deck {...deckOptions}>
+const StyledDeck = ({ slides, startingAt = 1 }) => {
+  const disableKeyboardControls = !!window.location.hash.includes('export&print');
+
+  return <Deck {...deckOptions} disableKeyboardControls={disableKeyboardControls} >
     {slides && MarkdownSlides(slides)}
   </Deck>
-);
+};
 
 export default StyledDeck;

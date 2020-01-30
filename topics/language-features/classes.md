@@ -33,7 +33,7 @@
 
 ## Inheritance
 
-See [Prototypes](prototypes.md)
+See [Prototypes](../prototypes/)
 ---
 
 ## Extends
