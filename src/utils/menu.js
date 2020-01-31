@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import topics, { courseTitle } from '../topics';
+import topics, { courseTitle, defaultOpenedSection } from '../topics';
 
 const locationMatches = link =>
   (_, location) => {
@@ -51,7 +51,7 @@ const MenuSection = ({ title, items, isOpen, toggle }) => {
 
 const Menu = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const [openedSection, setOpenedSection] = React.useState(topics.length - 1);
+  const [openedSection, setOpenedSection] = React.useState(defaultOpenedSection || topics.length - 1);
   const toggleMenu = React.useCallback(() => setMenuOpen(o => !o), []);
   const hideMenu = React.useCallback(() => setMenuOpen(false), []);
   const menuRef = React.useRef();
