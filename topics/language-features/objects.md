@@ -1,4 +1,5 @@
 # Objects
+Objects are collections of properties
 ---
 
 ## Creating Objects
@@ -9,11 +10,27 @@
 - `Factory pattern`
 ---
 
+
+### Anatomy of an object literal
+Object literals are composed of a series of `key`:`value` pairs.
+All keys of an object are converted to strings.
+
+```javascript
+// an object literal
+const person = {
+  'age': 33,
+  name: 'Misho', // the name key is a string, same as age
+  'favorite game': 'Race for the Galaxy'
+};
+```
+
+---
+
 ### Object literals
 
 ES6 introduces a new property shorthand.
-In the example below, the `hobby` variable is used
-as a property of the `person` object.
+Here the value of the `hobby` variable is assigned
+to the `hobby` property of the `person` object.
 
 ```javascript
   const hobby = 'juggling';
@@ -23,14 +40,27 @@ as a property of the `person` object.
     age: 30,
   };
 ```
+
+---
+
+### Accessing object properties
+There a 2 ways to access the value of an object property:
+- using the `.` infix operator
+- using the `[]` postfix operator
+
+```javascript
+  person.name // returns "Misho"
+  person['name'] // returns "Misho"
+
+  // might throw an error if a variable called name is not defined
+  person[name]
+```
+
 ---
 
 ### The new operator
 
 The `constructor` function sets the properties of the new object.
-
-The prototype of the new object is set
-to the value of the constructor function's prototype property.
 
 ```javascript
   //constructor function
@@ -39,14 +69,9 @@ to the value of the constructor function's prototype property.
     this.b = b;
   }
 
-  Point.prototype.getArea = function () {
-    return this.a * this.b;
-  };
-
   const rect1 = new Rect(5, 6);
-  rect1.getArea(); // 30
-
-  rect1.constructor; // the Rect function
+  rect1.a; // 5
+  rect1.b; // 6
 ```
 ---
 
@@ -54,22 +79,17 @@ to the value of the constructor function's prototype property.
 
 Creates objects with the specified prototype.
 ```javascript
-  const rect1 = Object.create({
-    getArea() { return this.a * this.b; }
-  });
-
+  const rect1 = Object.create();
   rect1.a = 5;
   rect1.b = 6;
-  rect1.getArea(); // 30
 ```
 ---
 
 ## Methods
 
-A method is a function that is used as a property of an object.
+A method is a function that is assigned to a property of an object.
 ES6 introduces a new shorthand for defining methods.
 In the below example `es5Method` and `es6Method` are equivalent.
-However `arrowNotAMethod` is different because of its `this` argument.
 
 ```javascript
   const object = {
@@ -80,7 +100,7 @@ However `arrowNotAMethod` is different because of its `this` argument.
 ```
 ---
 
-## Properties
+## Dynamic property names
 
 ES6 introduces dynamic property keys using bracket `[]` syntax.
 *Remember:* all object keys are strings
@@ -97,10 +117,14 @@ ES6 introduces dynamic property keys using bracket `[]` syntax.
 
 ### Property descriptors
 
-Properties are themselves objects with special flags.
-- configurable: property cannot be removed
-- enumerable: property is not listed
-- writable: the property's value cannot be changed
+Object properties have some special flags:
+- configurable: can the property be removed?
+- enumerable: is the property listed?
+- writable: can the value of the property be changed?
+
+---
+
+### Property descriptors
 
 ```javascript
   Object.getOwnPropertyDescriptors(
@@ -118,7 +142,7 @@ Properties are themselves objects with special flags.
 ```
 ---
 
-### Defining properties
+### Defining properties with flags
 
 You can set these special flags when defining properties.
 ```javascript
@@ -131,15 +155,15 @@ You can set these special flags when defining properties.
     {
       'newKey_1': { enumerable: false, value: 'unlisted' },
       'newKey_2': { configurable: false, value: 'here to stay'}
-  });
+    }
+  );
 ```
 ---
 
 ### Getters and Setters
 
-Properties that execute a `get` function when the property is accessed and a `set` function when it is assigned a value.
+Properties can execute a `get` function when the property is accessed and a `set` function when it is assigned a value.
 
-*Anti-Pattern* This should be used carefully. It creates side effects that are hard to detect and reason about.
 ```javascript
   const thermometer = Object.defineProperty(
     { c: 22 }, 'f', {
@@ -153,49 +177,46 @@ Properties that execute a `get` function when the property is accessed and a `se
 ```
 
 ---
-## The `Object` object
+## The Object object
 
-`Object` has many useful methods and properties.
-
-Almost all object inherit from `Object.prototype`.
+`Object` (with a capital O) is a special global object. It has many useful methods and properties.
 
 ---
-## Object.keys|values()
+## Object.keys / Object.values()
 
-Get an array of the names of all enumerable properties of an object.
+Get an array of the names of all _enumerable_ properties of an object.
 
 ```javascript
-  const myProperties = Object.keys(myObject);
+  const propertyNames = Object.keys(myObject); // ['name', 'age', 'hobby']
 ```
 
-Get an array of the values of the properties of an object.
+Get an array of the values of the _enumerable_ properties of an object.
 ```javascript
-  const myValues = Object.values(myValues);
+  const propertyValues = Object.values(myObject); // ['Misho', 33, 'juggling'] 
 ```
 ---
 
 ### Object.assign()
 
-Creates a new object containing all the properties of the
-`defaultData` and `userData` objects (users override defaults).
+Creates a new object containing all the _enumerable_ properties of the
+given objects (later objects override repeating keys).
 
 ```javascript
   const fullData = Object.assign({}, defaultData, userData);
 
-  // alternatively use the object spread draft specification
+  // alternatively use the object spread operator
   const fullData = { ...defaultData, ...userData };
 ```
 ---
 
 ### Object.preventExtensions()
 
-Objects also have special flags attached to them.
-
 Disallow adding new properties to an object.
+
 ```javascript
   const pointA = Object.preventExtensions({ x: 0, y: 0 });
   pointA.x = 15; // no problem
-  pointA.z = 0; // throws or fails silently
+  pointA.z = 0; // throws an error
   delete pointA.y; // success, but now it's a 1d point...
 ```
 ---
@@ -206,8 +227,8 @@ Disallow adding or removing properties.
 ```javascript
   const pointB = Object.seal({ x: 0, y: 0 });
   pointB.x = 15; // no problem
-  pointB.z = 0; // throws or fails silently
-  delete pointB.y; // throws or fails silently
+  pointB.z = 0; // throws an error
+  delete pointB.y; // throws an error
 ```
 ---
 
@@ -219,15 +240,15 @@ or changing their values.
 
 ```javascript
   const pointC = Object.freeze({ x: 0, y: 0 });
-  pointC.x = 15; // throws or fails silently
-  pointC.z = 0; // throws or fails silently
-  delete pointC.y; // throws or fails silently
+  pointC.x = 15; // throws an error
+  pointC.z = 0; // throws an error
+  delete pointC.y; // throws an error
 ```
 ---
 
 ### Inspect an object
 
-There are corresponding function that check if an object is frozen, sealed
+There are corresponding functions that check if an object is frozen, sealed
 or has disabled extensions.
 ```javascript
   Object.isExtensible(pointA) // false
@@ -242,11 +263,6 @@ or has disabled extensions.
   Object.isFrozen(pointB) // false
   Object.isFrozen(pointC) // true
 ```
----
-
-## Prototypical inheritance
-
-See [Prototypes](../prototypes/)
 ---
 
 ## Patterns
@@ -282,3 +298,8 @@ See [Prototypes](../prototypes/)
     translations[lang] || translations['en']
   );
 ```
+---
+
+## Prototypical inheritance
+
+See [Prototypes](../prototypes/)

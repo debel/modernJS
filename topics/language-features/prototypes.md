@@ -19,10 +19,11 @@ to another object (NOT a class).
 
   Object.getPrototypeOf([ 1, 2 ]) === Array.prototype // true
 ```
-`Object.getPrototypeOf` should not be used in application code
 ---
 
 ## Prototype chain
+
+All objects inherit from `Object.prototype`
 
 ```javascript
 Object.getPrototypeOf([]) === Array.prototype
@@ -34,14 +35,48 @@ Object.getPrototypeOf(Array.prototype) === Object.prototype
 Object.getPrototypeOf(Object.prototype)
 // null
 ```
+Note: `Object.getPrototypeOf` should not be used in application code
+
 ---
 
-### Property access
+### Setting the prototype of an object
 
-- If a property is missing when using the `.` or `[]` syntax,
+```javascript
+  function Person(name) {
+    this.name = name;
+    this.age = 0;
+  }
+
+  function Juggler(name) {
+    this.name = name;
+    this.hobby = 'juggling';
+  }
+
+  Juggler.prototype = new Person();
+
+  const misho = new Juggler();
+  misho.age // 0
+```
+
+---
+
+### Object.create(prototype)
+ES5 introduced this easier way to create objects with a specific prototype
+```javascript
+  const protoJuggler = { hobby: 'juggling' };
+  const juggler = Oject.create(protoJuggler);
+
+  const nonInheritingObject = Object.create(null);
+```
+
+---
+
+### Deep property access
+
+- If a property is missing on the target object
 the engine will search for it down the prototype chain.
 - Overwriting the value of a missing property, creates that property
-on the target object, without modifying the prototype.
+on the target object, without modifying any prototypes.
 
 ```javascript
   const a = { x: 50 };
@@ -52,17 +87,18 @@ on the target object, without modifying the prototype.
   b.x = 100;
   a.x // 50
 ```
+
 ---
 
-## Runtime dynamic prototypes
+### Runtime dynamic prototypes
 
-Prototypes are alive! Changing the prototype changes what inheriting objects see.
+Prototypes are alive! Changing the prototype changes what inheriting objects return.
 ```javascript
   const protoPerson = {
     sayHi() { return `Hi, I'm ${this.name}`}
   };
 
-  // use can pass an object of property descriptors
+  // also accepts an object of property descriptors
   // similarly to Object.defineProperties
   const misho = Object.create(
     protoPerson, { name: { value: 'Misho' } }

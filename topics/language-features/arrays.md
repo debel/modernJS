@@ -27,7 +27,7 @@ The length property contains the largest index of the array plus one.
   arr[5] = 'hello';
   arr.length // 6
 
-  arr // 5 empty slots, 6
+  arr // 5 empty slots, 'hello'
 ```
 ---
 

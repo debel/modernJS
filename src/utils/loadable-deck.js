@@ -32,7 +32,7 @@ export default ({ match, location }) => {
 
         window.location.hash = hash;
       });
-  }, [topic]);
+  }, [topic, fullPathToLecture]);
 
   return <Deck
     key={topic}

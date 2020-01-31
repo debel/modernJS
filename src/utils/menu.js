@@ -43,7 +43,7 @@ const MenuSection = ({ title, items, isOpen, toggle }) => {
     <React.Fragment>
       <li key={title} className={`menu_divider ${isOpen && 'menu_divider_selected'}`} onClick={toggle}>{title}</li>
       <div className="menu_section">
-        {isOpen && items.map(item => <MenuItem {...item} />)}
+        {isOpen && items.map(item => <MenuItem key={item.link} {...item} />)}
       </div>
     </React.Fragment>
   );
@@ -93,7 +93,7 @@ const Menu = () => {
         { menuOpen &&
         <ul className="menu_list" ref={menuListRef}>
           {topics.map((section, index) => (
-            <MenuSection {...section} isOpen={index === openedSection} toggle={toggleSection(index)} />
+            <MenuSection key={section.title} {...section} isOpen={index === openedSection} toggle={toggleSection(index)} />
           ))}
         </ul>}
       </aside>

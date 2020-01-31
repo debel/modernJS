@@ -16,10 +16,11 @@ const topics = [
   ]},
   { title: 'Week 2 - Advanced Language Features', items: [
     { link: '/language-features/objects/', text: 'Objects' },
+    { link: '/language-features/prototypes/', text: 'Prototypes' },
     { link: '/language-features/arrays/', text: 'Arrays' }, 
     { link: '/language-features/functions/', text: 'Functions' },
+    { link: '/language-features/loops/', text: 'Loops' },
     { link: '/language-features/scopes/', text: 'Scopes' },
-    { link: '/language-features/prototypes/', text: 'Prototypes' },
     { link: '/language-features/classes/', text: 'Classes' },
     { link: '/language-features/modules/', text: 'Modules' },
     { link: '/language-features/async-await/', text: 'Async/Await' },

@@ -14,7 +14,6 @@ The body is a code block (ordered statements).
 ---
 
 All functions can return a value through the `return` statement.
-Arrow functions return the value of the last expression.
 If no explicit value is specified, the `undefined` value is returned by default.
 
 Executing a function creates a new internal `scope` object.
@@ -22,16 +21,20 @@ Executing a function creates a new internal `scope` object.
 
 ## Properties
 
+Since functions are objects they can have their own properties
+
 ```javascript
   // the number of parameters the function formally accepts
   f.length
+
+  f.myVar = 42;
 ```
 ---
 
-## Statement vs expression form
+### Statement vs expression form
 
 Both forms define a function value and bind it to a variable with the given name.
-But function statements are hoisted. The following two snippets of code are equivalent.
+But function statements are hoisted.
 
 ```javascript
   // a function statement, the name is mandatory
@@ -58,7 +61,7 @@ But function statements are hoisted. The following two snippets of code are equi
   // multiple parameters
   const add = (a, b) => a + b;
 
-  // with a function body
+  // with a function body block
   const validate = (input) => {
     if (input !== 'correct') {
       throw new Error('not correct');

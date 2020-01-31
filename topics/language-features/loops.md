@@ -1,10 +1,5 @@
----
-title: Loops
-page: 1
-rank: 5
----
 # Loops
-
+---
 ## Counting
 
 ```javascript
@@ -12,13 +7,12 @@ rank: 5
   while (i > 0) {
     doStuff();
   }
-```
 
-```javascript
   for (let i = 0; i < 5; i += 1) {
     doStuff();
   }
 ```
+---
 
 ## Variable binding
 
@@ -30,6 +24,7 @@ rank: 5
 
   //logs: 5 5 5 5 5
 ```
+---
 
 `let` is rebound on each iteration of the loop
 ```javascript
@@ -39,7 +34,7 @@ rank: 5
 
   //logs: 1 2 3 4 5
 ```
-
+---
 ## Enumeration
 
 ```javascript
@@ -48,14 +43,12 @@ rank: 5
     console.log(index); // 0, 1, 2
     console.log(array[index]); // 'a', 'b', 'c'
   }
-```
 
-```javascript
-  const array = ['a', 'b', 'c'];
   for (const item of array) {
     console.log(item); // 'a', 'b', 'c'
   }
 ```
+---
 
 ## Recursion
 
@@ -67,6 +60,7 @@ rank: 5
     }
   }
 ```
+---
 
 ## Scheduling
 
@@ -75,9 +69,7 @@ rank: 5
     () => { console.log('gets called each second'); },
     1000
   );
-```
 
-```javascript
   const countdown = (n) => {
     console.log(n);
     if (n > 0) {
