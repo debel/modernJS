@@ -1,23 +1,15 @@
-## Scripts
-
-Loading code through a script tag
-grants that code full access to the global scope
-
-```html
-  <script src="anyscript.js"></script>
-  <script>
-    use(window.anythingValue);
-    window.youCan = 'override most globals';
-  </script>
-```
+## Modules
 ---
 
-## Asynchronous Module Definition (AMD)
+### Asynchronous Module Definition (AMD)
 
 - popular library: [requireJS](http://requirejs.org/)
 - loads code through `script tags` or `require`
 - Requires a name to path / url configuration
 - module code is "isolated" within its function scope
+---
+
+### Asynchronous Module Definition (AMD)
 
 ```javascript
 require([modules], function (modules) {
@@ -42,6 +34,14 @@ define('moduleName', [dependencies], function (dependencies) {
 ```
 ---
 
+## UMD
+
+- UMD stands for Universal Module Definition
+- Wraps your module so that it is acceptable to any type of module system
+  - Wrapper introduces size and runtime overhead
+  - Useful when publishing a library
+---
+
 ## ES6 Modules
 
 - Static module declarations only
@@ -55,13 +55,13 @@ define('moduleName', [dependencies], function (dependencies) {
 ```
 ---
 
-## UMD
+## Dynamic module import
 
-- UMD stands for Universal Module Definition
-- Wraps your module so that it is acceptable to any type of module system
-  - Wrapper introduces size and runtime overhead
-  - Useful when publishing a library
-- [See Build tools](../../development-tools/task-runners/)
+```javascript
+  import('my-module').then(moduleExports => {
+    moduleExports.doYourThing();
+  });
+```
 ---
 
 ## Links

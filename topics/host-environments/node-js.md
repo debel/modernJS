@@ -167,21 +167,9 @@ Using modules:
 ```
 ---
 
-### Streams
-
-See [Streams](../../data-structures/streams/)
-
----
-
 ## NPM modules
 
-See [npm](../../development-tools/npm/)
-
----
-
-## Express JS
-
-See [express](../../frameworks-and-libraries/express/)
+See [npm](../../tooling/npm/)
 
 ---
 

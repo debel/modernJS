@@ -1,11 +1,25 @@
 # Event loop
-![Event loop](/images/javascript_event_loop.png)
+- Event-driven
+- Single-threaded
+- Non-blocking
+---
+
+## Concurrency vs Parallelism
+![Event loop](/images/concurrent_vs_parallel.png)
 ---
 
 ## Event loop
-![Event loop](/images/event-loop.jpg)
+
+All JavaScript code is executed on the event loop which exists outside JavaScript.
+  
+The structure of the event loop is different between the browsers and node.js
+
 ---
 
+## Task Queues
+![Node event loop](/images/event-loop-queues.png)
+
+---
 ## Timers
 
 `setTimeout` allow us to execute an action
@@ -60,6 +74,16 @@ The following code illustrates the order of execution.
     }
   );
 ```
+---
+
+## Browser Event Loop
+
+![Browser event loop](/images/browser-event-loop.png)
+---
+
+## Node.js Event Loop
+
+![Node event loop](/images/node-event-loop-phases.png)
 ---
 
 ## Blocking the event loop
