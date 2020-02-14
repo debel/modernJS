@@ -36,4 +36,8 @@ The consumer requests data from the producer through the `next` method. The prod
 ```
 ---
 
-## Composability
+## Operations & Composability
+
+![Operators](/images/observables.png)
+
+See [RxJS](https://rxmarbles.com)

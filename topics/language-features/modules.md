@@ -67,4 +67,5 @@ define('moduleName', [dependencies], function (dependencies) {
 ## Links
 
 - See [Code loading](../../host-environments/code-loading/)
-- [Article about modules and code loading](https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/)
+- [Modules in the browser](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+- [Modules in Node.js](https://nodejs.org/docs/latest-v12.x/api/esm.html)

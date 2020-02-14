@@ -22,27 +22,28 @@ const topics = [
     { link: '/language-features/scopes/', text: 'Scopes' },
     { link: '/language-features/error-handling/', text: 'Error handling' },
   ]},
-  { title: 'Week 3: Host environments and tooling', items: [
-    { link: '/language-features/json/', text: 'JSON' },
+  { title: 'Week 3: Host environments and the event loop', items: [
     { link: '/language-features/classes/', text: 'Classes' },
     { link: '/host-environments/code-loading/', text: 'Code loading' },
     { link: '/language-features/modules/', text: 'Modules' },
     { link: '/host-environments/event-loop/', text: 'The event loop' },
-    { link: '/language-features/async-await/', text: 'Async/Await' },
     { link: '/host-environments/browser/', text: 'The browser' },
     { link: '/host-environments/node-js/', text: 'Node.js' },
-    { link: '/tooling/npm/', text: 'Getting started with npm' },
     { link: '/tooling/debugging/', text: 'Debugging' },
-    { link: '/tooling/static-analysis/', text: 'Static analysis' },
   ]},
-  { title: 'Week 4: Data structures design patterns', items: [
+  { title: 'Week 4: Tooling, data structures and design patterns', items: [
+    { link: '/language-features/json/', text: 'JSON' },
+    { link: '/tooling/npm/', text: 'NPM' },
+    { link: '/tooling/static-analysis/', text: 'Static analysis' },
     { link: '/tooling/transpilers/', text: 'Transpilers' },
     { link: '/tooling/bundling/', text: 'Bundlers' },
-    { link: '/data-structures/events/', text: 'Events' },
-    { link: '/data-structures/generators/', text: 'Generators' },
     { link: '/data-structures/maps-and-sets/', text: 'Maps and Sets' },
+    { link: '/data-structures/events/', text: 'Events' },
     { link: '/data-structures/promises/', text: 'Promises' },
+    { link: '/data-structures/generators/', text: 'Generators' },
+    { link: '/language-features/async-await/', text: 'Async/Await' },
     { link: '/data-structures/observables/', text: 'Observables' },
+    { link: '/homework-overview/', text: 'Homework overview' },
   ]},
 ];
 
@@ -50,4 +51,4 @@ export default topics;
 
 export const courseTitle = 'INF310: Modern JS';
 
-export const defaultOpenedSection = 3;
+export const defaultOpenedSection = 4;
