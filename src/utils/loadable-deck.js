@@ -2,6 +2,13 @@ import React from 'react';
 
 import Deck from './styled-markdown-deck';
 
+const loadSlides = loadedContent => (
+  loadedContent.default[0] === '#'
+    ? loadedContent.default
+    : fetch(loadedContent.default)
+      .then(res => res.text())
+);
+
 export default ({ match, location }) => {
   const section = (match && match.params.section) || null;
   const topic = (match && match.params.topic) || 'about-the-course';
@@ -20,10 +27,8 @@ export default ({ match, location }) => {
   React.useEffect(() => {
     topic && import(`../../topics/${fullPathToLecture}.md`)
       .catch(error => import('../error.md'))
-      .then(loadedContent =>
-        fetch(loadedContent.default)
-          .then(res => res.text()))
-          .then(loadedContent => {
+      .then(loadSlides)
+      .then(loadedContent => {
         setContent(loadedContent);
         document.title = `INF310: ${topic}`;
         const hash = window.location.hash.length < 2

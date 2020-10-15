@@ -6,7 +6,7 @@
 
 - Mihail Mikov
 - Graduated AUBG 2009
-- Full-stack Engineer at Skyscanner
+- Engineering Manager at SumUp
 ---
 
 ## Communication
@@ -36,38 +36,38 @@
 ## Technologies
 
 - npm (package manager)
-- react (frontend)
-- express (backend)
+- browser APIs (frontend)
+- node.js APIs (backend)
 - jest (testing)
 ---
 
 ## Assignments
 
-- Lab sessions (2 x 20%)
-- Homework assignments (2 x 20%)
-- Test (1 x 20%)
----
-
-### Lab sessions
-
-- 2 sessions, each worth 20% of the final grade.
-- Full instructions for each session will be provided in class.
-- Lab sessions will be held on the _*2nd*_, and _*4th*_ day of classes.
+- Homework assignments (3 x 20%)
+- Test (1 x 35%)
+- Participation (5 x 1%)
 ---
 
 ### Homework assignments
 
-- 2 assignments, each worth 20% of the final grade.
+- 3 assignments, each worth 20% of the final grade.
 - Full instructions for each session will be provided in class.
-- These assignments will be due by the _*3rd*_, and the _*5th*_ day of classes.
+- These assignments will be due by the _*3rd*_, *4th* and _*5th*_ classes.
 ---
 
 ### Final Test
 
-- The test will be worth 20% of the final grade.
+- The test will be worth 35% of the final grade.
 - It will cover all the material and consist of
 multiple choice and short answer questions.
 - It will be held on the _*5th*_ day of classes.
+---
+
+### Participation
+
+- Attendance and participation 1% for each class
+- Asking and answering questions
+- Participate in discussions
 ---
 
 ## Questions?
