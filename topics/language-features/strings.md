@@ -85,7 +85,7 @@ Expressions are resolved at the point of definition.
   "hello world".substr(6, 5) // world
 
   // substring(index, index)
-  "hello world".substr(6, 11) // world
+  "hello world".substring(6, 11) // world
 ```
 
 ---
