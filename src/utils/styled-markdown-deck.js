@@ -27,11 +27,11 @@ const deckOptions = {
   transitionDuration: 200,
 };
 
-const StyledDeck = ({ slides, startingAt = 1 }) => {
+const StyledDeck = ({ slides, startingAt = 1, markdown = true }) => {
   const disableKeyboardControls = !!window.location.hash.includes('export&print');
 
   return <Deck {...deckOptions} disableKeyboardControls={disableKeyboardControls} >
-    {slides && MarkdownSlides(slides)}
+    {slides && markdown ? MarkdownSlides(slides) : slides}
   </Deck>
 };
 

@@ -51,4 +51,4 @@ export default topics;
 
 export const courseTitle = 'INF310: Modern JS';
 
-export const defaultOpenedSection = 2;
+export const defaultOpenedSection = 3;

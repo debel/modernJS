@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
+import WeeklyOverview from './utils/weekly-overview';
 import LoadableDeck from './utils/loadable-deck';
 import Menu from './utils/menu';
 
@@ -27,6 +28,7 @@ export default () => {
       <Route component={PrintButton} />
       <Route component={Menu} />
       <Switch>
+        <Route path="/overview/week/:week" component={WeeklyOverview} />
         <Route path="/:section?/:topic" component={LoadableDeck} />
         <Redirect exact from="/" to="/about-the-course/" />
       </Switch>
