@@ -39,31 +39,28 @@ will execute the event handlers of the chain of parent nodes.
   <ul id="colors">
     <li>Green</li>
     <li>Blue</li>
-    <li>Red</li>
   </ul>
   <script>
-    document.getElementById('colors')
-      .addEventListener(
-        'click',
-        (event) => console.log(event.target.innerText)
-      );
-</script>
+    document.getElementById('colors').addEventListener(
+        'click', event => console.log(event.target.innerText)
+    );
+  </script>
 ```
 ---
 
-## Custom Events in Browser
+## Custom Events in Browsers
 
 ```javascript
-  // Listening for events on a DOM element (e.g. document)
+  // Listen for events on a DOM element (e.g. document)
   document.addEventListener(
     'myCustomEvent',
-    function ({ detail }) => console.log(detail)
+    event => console.log(event.detail)
   );
 
   // Trigger the event
   const myEvent = new CustomEvent(
     'myCustomEvent',
-    { detail: 'custom properties' }
+    { detail: 'any custom properties' }
   );
 
   document.dispatchEvent(myEvent);
@@ -76,14 +73,20 @@ will execute the event handlers of the chain of parent nodes.
   const EventEmitter = require('events').EventEmitter;
   const source = new EventEmitter();
 
+  // execute the callback function each time the event is triggered
   source.on('eventName', callback);
+
+  // execute the callback only once
   source.once('eventName', callback);
 
+  // trigger the event
   source.emit('eventName', payload);
 ```
 ---
 
 ## WebSockets
+A network protocol on top of HTTP that allows for
+2-way communication between the browser and the server
 
 ```javascript
   websocket.on('connection', socket => {
@@ -100,6 +103,7 @@ Events are a great mechanism to implement various patterns.
 
 ### Fan-out
 An event with a single producer and multiple consumers.
+
 ```javascript
   // these can be defined in different parts of the system
   btn.on('click', updateUI);
@@ -109,7 +113,7 @@ An event with a single producer and multiple consumers.
 ---
 
 ### Fan-in
-An event with a multiple producers and (possibly) a single consumers.
+An event with multiple producers and (possibly) a single consumers.
 ```javascript
   // multiple players fire the same event
   lobby.emit('ready', player);
@@ -120,15 +124,13 @@ An event with a multiple producers and (possibly) a single consumers.
 ---
 
 ### Pub/Sub
-A "hub" with multiple topics. Events are a natural implementation of the pub/sub pattern.
-
-It allows us to decouple the producers and consumers (publishers and subscribers) of a messaging system.
+Allows us to decouple the producers and consumers (publishers and subscribers) of a messaging system.
 
 ```javascript
-  topics.on('new-items', handleNewItem);
-  topics.on('my-message', handleMyMessage);
+  topics.on('new-item-on-sell', handleNewItem);
   topics.on('item-order', handleItemOrder);
+  topics.on('customer-support', handleMyMessage);
 
-  topics.emit('new-item', { name: "Laptop", price: 873.50 });
-  topics.emit('item-order', { item, client });
+  topics.emit('new-item-on-sell', { name: "Laptop", price: 873.50 });
+  topics.emit('item-order', { client, item });
 ```

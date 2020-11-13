@@ -21,29 +21,30 @@ const topics = [
     { link: '/language-features/loops/', text: 'Loops' },
     { link: '/language-features/scopes/', text: 'Scopes' },
     { link: '/language-features/error-handling/', text: 'Error handling' },
+    { link: '/language-features/classes/', text: 'Classes' },
   ]},
   { title: 'Week 3: Host environments and the event loop', items: [
-    { link: '/language-features/classes/', text: 'Classes' },
     { link: '/host-environments/code-loading/', text: 'Code loading' },
     { link: '/language-features/modules/', text: 'Modules' },
     { link: '/host-environments/event-loop/', text: 'The event loop' },
     { link: '/host-environments/browser/', text: 'The browser' },
     { link: '/host-environments/node-js/', text: 'Node.js' },
-    { link: '/tooling/debugging/', text: 'Debugging' },
   ]},
   { title: 'Week 4: Tooling, data structures and design patterns', items: [
     { link: '/language-features/json/', text: 'JSON' },
+    { link: '/data-structures/events/', text: 'Events' },
+    { link: '/data-structures/promises/', text: 'Promises' },
+    { link: '/language-features/async-await/', text: 'Async/Await' },
     { link: '/tooling/npm/', text: 'NPM' },
     { link: '/tooling/static-analysis/', text: 'Static analysis' },
     { link: '/tooling/transpilers/', text: 'Transpilers' },
     { link: '/tooling/bundling/', text: 'Bundlers' },
+  ]},
+  { title: 'Week 5: Additional topics', items: [
+    { link: '/tooling/debugging/', text: 'Debugging' },
     { link: '/data-structures/maps-and-sets/', text: 'Maps and Sets' },
-    { link: '/data-structures/events/', text: 'Events' },
-    { link: '/data-structures/promises/', text: 'Promises' },
     { link: '/data-structures/generators/', text: 'Generators' },
-    { link: '/language-features/async-await/', text: 'Async/Await' },
     { link: '/data-structures/observables/', text: 'Observables' },
-    { link: '/homework-overview/', text: 'Homework overview' },
   ]},
 ];
 
@@ -51,4 +52,4 @@ export default topics;
 
 export const courseTitle = 'INF310: Modern JS';
 
-export const defaultOpenedSection = 3;
+export const defaultOpenedSection = 4;

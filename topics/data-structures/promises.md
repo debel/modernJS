@@ -1,7 +1,10 @@
 # Promises
+represent the eventual completion or failure of an asynchronous operation and its resulting value.
 ---
 
 ## Using promises
+
+Promise objects expose the `then` and `catch` methods
 
 ```javascript
   // Handle a value once it's available
@@ -26,17 +29,6 @@ from either `waitForAnswer` or `useAnswer`
 ```
 ---
 
-### Handle and continue
-
-In this case the `catch function` will provide
-a default value to the next `then function`
-```javascript
-  waitForAnswer()
-    .catch(logErrorAndDefault)
-    .then(useAnswerOrDefault)
-```
----
-
 ### Chaining
 
 Each call of the `then` method returns a new promise
@@ -50,27 +42,16 @@ Each call of the `then` method returns a new promise
 ```
 ---
 
-### Fan-out
+### Recovering from errors
 
-Adding multiple handlers for the same promise
-```javascript
-  const p1 = waitForAnswer();
-  const p3 = p1.then(answer => answer * 2);
-  const p2 = p1.then(answer => answer / 2);
-  p2.then(console.log);
-  p3.then(console.log);
-```
----
-
-### Execution order
+Calls to `catch` also return a new promise. Execution continues through the chain.
 
 ```javascript
-  setTimeout(() => console.log('A'), 0);
-  console.log('B');
-  Promise.resolve('C').then(c => console.log(c));
-  console.log('D');
+  waitForAnswer()
+    .catch(logErrorAndDefault)
+    .then(useAnswerOrDefault);
 
-  // B D C A
+  // useAnswerOrDefault will be called in all cases, even if waitForAnswer threw an error
 ```
 ---
 
@@ -96,6 +77,33 @@ Adding multiple handlers for the same promise
     .catch(error => {
       console.log(error);
     });
+```
+---
+
+### Fan-out
+
+Adding multiple handlers for the same promise
+```javascript
+  const p1 = Promise.resolve(10);
+  
+  const p2 = p1.then(answer => answer * 2);
+  const p3 = p1.then(answer => answer / 2);
+
+  p2.then(console.log); // 20
+  p3.then(console.log); // 5
+```
+---
+
+### Execution order
+Resolved promises are executed each time the current event loop task is completed
+
+```javascript
+  setTimeout(() => console.log('A'), 0);
+  console.log('B');
+  Promise.resolve('C').then(c => console.log(c));
+  console.log('D');
+
+  // B D C A
 ```
 ---
 
@@ -128,18 +136,13 @@ Adding multiple handlers for the same promise
 ```
 ---
 
-### Ajax with a promise
+### Using fetch
+
+Fetch is a function that sends a request to a server and returns a promise
+that will resolve with the server's response
 
 ```javascript
-  const ajax = ({ method = 'GET', url, data = null }) =>
-    new Promose((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = () => {
-      if (xhr.state === 4) {
-        if (xhr.error) { reject(xhr.error); }
-        else { resolve(xhr.responseText); }
-      }
-    };
-    xhr.open(method, url); xhr.send(data);
-  });
+  fetch('https://path-to.some/data')
+    .then(response => response.json()) // parse the response as json
+    .then(useTheData);
 ```

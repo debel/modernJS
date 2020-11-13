@@ -4,6 +4,16 @@ node package manager
 
 ---
 
+
+## bootstrapping a project
+
+Prompts a series of questions and creates a `package.json` as a result
+```bash
+  npm init
+```
+
+---
+
 ## package.json
 
 ```json
@@ -23,15 +33,6 @@ node package manager
       "react": "^16.8.4"
     }
   }
-```
-
----
-
-## bootstrapping a project
-
-Prompts a series of questions and creates a `package.json` as a result
-```bash
-  npm init
 ```
 
 ---

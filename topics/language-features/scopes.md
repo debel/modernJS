@@ -1,4 +1,5 @@
 # Scopes
+Execution context - the context in which values and expressions are "visible" or can be referenced.
 ---
 
 ## Block scope
@@ -6,7 +7,7 @@
 ```javascript
   let i = 100;
   {
-    var x = 5;
+    var x = 5; // hoisted
     let y = 10;
     const z = 15;
   }
@@ -23,11 +24,11 @@
 ```javascript
 function f() {
   // var x is hoisted
+  
   doSomeStuff(x); // x is undefined
 
   var x = 5;
-  // but the assignment happens at the
-  // original place in the code
+  // but the assignment happens at the original place in the code
 }
 
 // accessing x outside the function
@@ -35,38 +36,9 @@ x // throws an Error
 ```
 ---
 
-## Lexical scope (Closure)
-
-Functions hold a reference to the scope
-they are defined in.
-
----
-"Module" A:
-```javascript
-  const greeting = 'Hi';
-
-  function person(name) {
-
-    return {
-      sayHi() {
-        console.log(`${greeting}, I'm ${name}`);
-      }
-    }
-  }
-```
-
-"Module" B:
-```javascript
-  person('Misho').sayHi();
-  // Hi, I'm Misho
-```
----
-
 ## Module scope
 
 Modules create their own scopes.
-Different module systems have different
-implementation details.
 
 ```javascript
   // imports are immutable bindings
@@ -76,13 +48,12 @@ implementation details.
   let x = 5;
 
   // exports are immutable bindings
-  // the value of x cannot be changed
-  // from outside of the module
+  // the value of x cannot be changed from outside of the module
   export x;
 
   export function doStuff(arg) {
     // reassign x within the module
-    x = lib.process(arg);
+    x = lib.use(arg);
 
     return 'done';
   }
@@ -91,20 +62,55 @@ implementation details.
 
 ## Global scope
 
-- In the browser the global scope is the window object.
-```javascript
-  window.anything
-```
-- In node.js modules scope shadows global scope
-- the `global` object exposes the global scope
-```javascript
-  // module scope
-  const x = 50;
+In the browser the global scope is the `window` object.
 
-  // implied globals are also in module scope
+```javascript
+  // any variable defined without using var, let or const
+  // gets attached to the global object
+  myGlobalVar = 5;
+
+  window.myGlobalVar // 5
+```
+---
+
+## Global scope
+
+In node.js modules scope shadows global scope.
+The `global` object exposes the global scope
+
+```javascript
+  // implied globals are in module scope
   y = 100;
 
-  // create "true" globals
-  // by assigning to the global object
+  // create globals by assigning to the global object
+  // these will be accessible from any module through global
   global.z = 200;
 ```
+---
+
+## Lexical scope (Closure)
+
+Functions have access to the scope
+they are defined in.
+
+---
+Module A:
+```javascript
+  const greeting = 'Hello!'; // module scope
+
+  export function SayHi() {
+    console.log(greeting);
+  }
+```
+
+Module B:
+```javascript
+  import { sayHi } from './moduleA';
+  
+  sayHi(); // Hello!
+```
+---
+
+## Scopes
+
+![Scopes](/images/scopes.jpg)

@@ -3,20 +3,24 @@
 
 ## Anatomy of a function
 
-Functions are objects that inherit from `Function.prototype`.
-To become a function, an object must implement
-the `[[Call]]` and `[[Construct]]` internal methods.
----
-
 Functions have a `declaration`, also called a `function signature` and a `body`.
 The `declaration` contains an optional name and a list of parameters.
 The body is a code block (ordered statements).
+
+```javascript
+  function f(a, b) { return a + b; }
+```
 ---
+
+### Return values
 
 All functions can return a value through the `return` statement.
 If no explicit value is specified, the `undefined` value is returned by default.
 
-Executing a function creates a new internal `scope` object.
+```javascript
+  function noReturnValue() { }
+  noReturnValue(); // undefined
+```
 ---
 
 ## Properties
@@ -24,11 +28,20 @@ Executing a function creates a new internal `scope` object.
 Since functions are objects they can have their own properties
 
 ```javascript
+  function f(a, b) {};
   // the number of parameters the function formally accepts
-  f.length
+  f.length // 2
 
+  // functions are object and call have properties
   f.myVar = 42;
 ```
+---
+
+## Internals
+
+Functions are objects that inherit from `Function.prototype`.
+To become a function, an object must implement
+the `[[Call]]` and `[[Construct]]` internal methods.
 ---
 
 ### Statement vs expression form
