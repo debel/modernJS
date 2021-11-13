@@ -1,4 +1,4 @@
-# INF310
+# COS310
 ## Modern JavaScript
 ---
 
@@ -12,7 +12,7 @@
 ## Communication
 
 - [e-mail (mmikov@aubg.edu)](mailto:mmikov@aubg.edu)
-- office hours: Fridays 13:00 - 14:00
+- office hours: by arrangement
 ---
 
 ## Materials

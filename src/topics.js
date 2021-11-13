@@ -12,13 +12,13 @@ const topics = [
     { link: '/language-features/types/', text: 'Types' },
     { link: '/language-features/numbers-and-math/', text: 'Numbers and Math' },
     { link: '/language-features/strings/', text: 'Strings' },
+    { link: '/language-features/loops/', text: 'Loops' },
   ]},
   { title: 'Week 2: Advanced Language Features', items: [
     { link: '/language-features/objects/', text: 'Objects' },
     { link: '/language-features/prototypes/', text: 'Prototypes' },
     { link: '/language-features/arrays/', text: 'Arrays' }, 
     { link: '/language-features/functions/', text: 'Functions' },
-    { link: '/language-features/loops/', text: 'Loops' },
     { link: '/language-features/scopes/', text: 'Scopes' },
     { link: '/language-features/error-handling/', text: 'Error handling' },
     { link: '/language-features/classes/', text: 'Classes' },
@@ -50,6 +50,6 @@ const topics = [
 
 export default topics;
 
-export const courseTitle = 'INF310: Modern JS';
+export const courseTitle = 'COS310: Modern JS';
 
 export const defaultOpenedSection = 4;
