@@ -97,8 +97,9 @@ The browser is both powerful and restricted at the same time.
 
 - [WebGL Juggler](http://www.jugglesaver.co.uk/juggle/webgl.html)
 
+---
 ### User Media
-
+---
 ### Service Worker
 ---
 

@@ -1,8 +1,8 @@
 # JSON
+stands for `JavaScript Object Notation`.
 
-JSON stands for `JavaScript Object Notation`.
-It is used as a data exchange format.
-JSON *cannot* contian any functions - only data.
+It is used as a text-based data exchange format.
+JSON can only contian data.
 
 ---
 ## JSON parse
@@ -10,13 +10,14 @@ JSON *cannot* contian any functions - only data.
 All objects keys in a json text must be double quoted.
 
 ```javascript
+// Notice the object is declared as text inside a string
 const jsonString = '{ "id": 0, "message": "hello", "someArray": [1, 2, 3]  }';
-const object = JSON.parse(jsonString);
+const object = JSON.parse(jsonString); // converts the text to an object
 console.log(object.message, object.someArray[1]); // "hello" 2
 
 JSON.parse(100); // returns 100
-JSON.parse("test"); // throws an error
 JSON.parse('"test"'); // returns "test"
+JSON.parse("test"); // throws an error! Why?
 ```
 
 ---
@@ -33,8 +34,9 @@ JSON.parse('"test"'); // returns "test"
   // will not include the "myMethod" property because it is a function
   const jsonString = JSON.stringify(object);
 
-  // select which object properties to include in the resulting string
-  const messageOnly = JSON.stringify(object, ['message']); // '{"message": "hello"}'
+  // select which object properties to include in the resulting JSON string
+  const messageOnly = JSON.stringify(object, ['message']);
+  // '{"message": "hello"}'
 ```
 
 ---

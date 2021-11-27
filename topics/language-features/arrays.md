@@ -136,5 +136,12 @@ Returns true if all the elements satisfy the predicate
 ```
 ---
 ### flat
-
+Returns a new array containing the contents of the sub-arrays
+```javascript
+[[1,2], [3,4]].flat() // returns [1, 2, 3, 4]
+```
 ### flatMap
+Combines the flat and map functions - applies the callback to each sub-array
+```javascript
+[[1,2], [3,4]].flatMap(subArray => sum(subArray)) // returns [3, 7]
+```

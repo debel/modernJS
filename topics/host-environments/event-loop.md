@@ -4,22 +4,39 @@
 - Non-blocking
 ---
 
-## Concurrency vs Parallelism
-![Event loop](/images/concurrent_vs_parallel.png)
+## The JS runtime (simplified)
+
+![JS Runtime](/images/js-runtime.png)
+---
+
+### Blowing the stack
+
+Chaining too many function calls can lead
+to exceeding the size of the call stack.
+The following code will eventually throw an error.
+
+```javascript
+  let b;
+  const a = { exec() { b.exec(); } };
+  b = { exec() { a.exec(); } };
+
+  a.exec();
+  // a calls b calls a calls b
+  // calls a calls b etc..
+```
 ---
 
 ## Event loop
 
-All JavaScript code is executed on the event loop which exists outside JavaScript.
-  
-The structure of the event loop is different between the browsers and node.js
+All JS code is executed on the event loop.
 
+It is not part of the language, but rather provided by the Host Environment.
 ---
 
-## Task Queues
-![Node event loop](/images/event-loop-queues.png)
-
+## Concurrency vs Parallelism
+![Event loop](/images/concurrent_vs_parallel.png)
 ---
+
 ## Timers
 
 `setTimeout` allow us to execute an action
@@ -42,12 +59,10 @@ periodically after at a given interval
   // returns an interval id that can be used to cancel the timer
   clearInterval(interval);
 ```
+
 ---
-
 ## Microtasks
-
 Promises are resolved at the end of the current event loop task.
-The following code illustrates the order of execution.
 ```javascript
   // add the given action at the end of the event queue
   setTimeout(() => console.log('third'), 0);
@@ -60,10 +75,9 @@ The following code illustrates the order of execution.
 
   // first, second, third
 ```
+
 ---
-
 ## Browser animation
-
 - The browser calls your function when it's ready to redraw the screen.
 - Optimized for both performance and power usage.
 
@@ -74,8 +88,17 @@ The following code illustrates the order of execution.
     }
   );
 ```
+
+---
+## Task Queues
+![Node event loop](/images/event-loop-queues.png)
+
 ---
 
+## Event Loop structure
+The structure of the event loop is different between the browsers and node.js
+
+---
 ## Browser Event Loop
 
 ![Browser event loop](/images/browser-event-loop.png)
@@ -97,23 +120,6 @@ later tasks on the event queue will not be processed
   };
 
   longSyncTask();
-```
----
-
-## Blowing the stack
-
-Chaining too many function calls can lead
-to exceeding the size of the call stack.
-The following code will eventually throw an error.
-
-```javascript
-  let b;
-  const a = { exec() { b.exec(); } };
-  b = { exec() { a.exec(); } };
-
-  a.exec();
-  // a calls b calls a calls b
-  // calls a calls b etc..
 ```
 ---
 

@@ -14,28 +14,28 @@ const topics = [
     { link: '/language-features/strings/', text: 'Strings' },
   ]},
   { title: 'Week 2: Advanced Language Features', items: [
+    { link: '/language-features/loops/', text: 'Loops' },
     { link: '/language-features/objects/', text: 'Objects' },
-    { link: '/language-features/prototypes/', text: 'Prototypes' },
     { link: '/language-features/arrays/', text: 'Arrays' }, 
     { link: '/language-features/functions/', text: 'Functions' },
     { link: '/language-features/scopes/', text: 'Scopes' },
-    { link: '/language-features/loops/', text: 'Loops' },
+    { link: '/language-features/prototypes/', text: 'Prototypes' },
     { link: '/language-features/error-handling/', text: 'Error handling' },
     { link: '/language-features/classes/', text: 'Classes' },
   ]},
   { title: 'Week 3: Host environments and the event loop', items: [
+    { link: '/language-features/json/', text: 'JSON' },
+    { link: '/host-environments/event-loop/', text: 'The event loop' },
     { link: '/host-environments/code-loading/', text: 'Code loading' },
     { link: '/language-features/modules/', text: 'Modules' },
-    { link: '/host-environments/event-loop/', text: 'The event loop' },
     { link: '/host-environments/browser/', text: 'The browser' },
     { link: '/host-environments/node-js/', text: 'Node.js' },
+    { link: '/tooling/npm/', text: 'NPM' },
   ]},
   { title: 'Week 4: Tooling, data structures and design patterns', items: [
-    { link: '/language-features/json/', text: 'JSON' },
     { link: '/data-structures/events/', text: 'Events' },
     { link: '/data-structures/promises/', text: 'Promises' },
     { link: '/language-features/async-await/', text: 'Async/Await' },
-    { link: '/tooling/npm/', text: 'NPM' },
     { link: '/tooling/static-analysis/', text: 'Static analysis' },
     { link: '/tooling/transpilers/', text: 'Transpilers' },
     { link: '/tooling/bundling/', text: 'Bundlers' },
@@ -52,4 +52,4 @@ export default topics;
 
 export const courseTitle = 'COS310: Modern JS';
 
-export const defaultOpenedSection = 2;
+export const defaultOpenedSection = 3;

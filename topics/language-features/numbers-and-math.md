@@ -83,8 +83,36 @@ Prefer `Number.parseInt` to the global `parseInt` function
 ```
 
 ---
-## Math functions
+## The Math object
+`Math` is a built-in object that has properties and methods for mathematical constants and functions.
 
+---
+### Math functions
+#### Math.abs(x)
+Returns the absolute value of the argument
+```javascript
+Math.abs(5) === Math.abs(-5)
+```
+#### Math.floor(x)
+Returns the largest integer less than or equal to x.
+```javascript
+Math.floor(5.1) // returns 5
+Math.floor(5.9) // returns 5
+```
+
+---
+#### Math.random(x)
+Returns a psudo-random number between 0 and 1
+```javascript
+Math.random() // returns 0.7321154206 (for example)
+```
+#### Random number in a range
+An example for a function that can return a psudo-random number in a given range
+```javascript
+function randomInRage(lower, upper) {
+  return lower + Math.floor(Math.random() * (upper - lower))
+}
+```
 ---
 ## Links
 
